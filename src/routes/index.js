@@ -10,6 +10,7 @@ import Navbar from "../components/common/Navbar";
 import Footer from "../components/common/Footer";
 import Cart from "../components/Home/Cart/Cart";
 import Checkout from "../components/Home/Cart/Checkout";
+import NotFound from "../components/Home/NotFound";
 
 const Index = () => {
   return (
@@ -24,7 +25,7 @@ const Index = () => {
         <Route path="/sport" element={<Sport />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/checkout" element={<Checkout />} />
-        {/* <Route path="/contact" element={<Contact/>} /> */}
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </BrowserRouter>
