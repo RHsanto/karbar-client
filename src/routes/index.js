@@ -11,7 +11,7 @@ import Footer from "../components/common/Footer";
 import Cart from "../components/Home/Cart/Cart";
 import Contact from "../components/Home/Contact";
 import Checkout from "../components/Home/Cart/Checkout";
-import NotFound from "../components/Home/NotFound";
+
 import Login from "../components/Home/Authentication/Login";
 import SignUp from "../components/Home/Authentication/SignUp";
 
@@ -32,7 +32,6 @@ const Index = () => {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </BrowserRouter>
