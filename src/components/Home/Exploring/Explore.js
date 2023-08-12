@@ -105,13 +105,6 @@ const Explore = () => {
         >
           <BiDumbbell /> <small>Sports</small>
         </button>
-        <button
-          onClick={handleBeauty}
-          className={`${select === "Beauty" && "bg-black text-white"}
-           rounded-full py-1 px-5 flex items-center gap-1`}
-        >
-          <AiOutlineCrown /> <small>Beauty</small>
-        </button>
       </div>
       {/* selector items */}
       {select === "Women" && <Women />}

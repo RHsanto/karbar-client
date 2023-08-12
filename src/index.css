@@ -41,6 +41,7 @@ li {
   cursor: pointer;
 }
 
+/* here all common btn */
 .common-btn,
 .common-btn2,
 .active-btn,
@@ -74,40 +75,7 @@ li {
   padding: 20px 36px;
 }
 
-.slick-next:before {
-  background-color: #f55c2a;
-  position: absolute;
-  margin-top: -300px;
-  width: 50px;
-  padding: 15px 10px;
-  border-radius: 50%;
-  margin-left: -250px;
-}
-.slick-prev:before {
-  background-color: #f55c2a;
-  position: absolute;
-  margin-top: -300px;
-  margin-left: 1250px;
-  width: 50px;
-  padding: 15px 10px;
-  border-radius: 50%;
-}
-
-@media only screen and (min-width: 200px) and (max-width: 600px) {
-  .slick-prev:before {
-    background-color: #f7503a;
-    position: absolute;
-    width: 50px;
-    margin-left: 350px;
-    padding: 15px 10px;
-    border-radius: 50%;
-    top: 100px;
-  }
-  .slick-next:before {
-    margin-left: -100px;
-    top: 100px;
-  }
-}
+/* img hover css */
 
 .imagesec:hover .select_size {
   display: block;

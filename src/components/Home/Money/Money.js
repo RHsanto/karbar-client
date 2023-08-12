@@ -3,7 +3,7 @@ import money from "../../../images/money.png";
 const Money = () => {
   return (
     <div className=" container mx-auto lg:px-32 ">
-      <div className="lg:flex gap-10 items-center border-t-2 lg:pt-32 p-10">
+      <div className="lg:flex gap-10 items-center border-t-2 lg:py-32 p-10">
         <div>
           <h1 className="lg:leading-[80px] pb-10">Earn free money with Dokan</h1>
           <span>With Dokan you will get freeship & savings combo...</span>

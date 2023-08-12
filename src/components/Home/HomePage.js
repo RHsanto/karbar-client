@@ -12,7 +12,7 @@ import AllItems from "./Ternding/AllItems";
 const HomePage = () => {
   return (
     <div>
-      {/* <HeroSection /> */}
+      <HeroSection />
       <Discover />
       <NewArrivals />
       <AllStep />
