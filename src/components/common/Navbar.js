@@ -31,7 +31,7 @@ const Navbar = () => {
   }, [products]);
 
   return (
-    <div className="z-[9999] bg-white fixed w-[100%] border-b">
+    <div className="z-[9999] bg-white sticky  border-b top-0">
       {/* large screen menu */}
       <div className="lg:block hidden">
         <div className=" container px-32 mx-auto  h-20  flex justify-between items-center ">

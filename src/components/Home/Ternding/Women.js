@@ -2,7 +2,6 @@
 /* eslint-disable react/no-unescaped-entities */
 
 import React, { useState, useEffect } from "react";
-
 import { AiFillStar } from "react-icons/ai";
 import { BsArrowsFullscreen, BsFillBagCheckFill, BsStars } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,7 +9,7 @@ import { RxCross1 } from "react-icons/rx";
 import { fetchProductsByType } from "../../../Redux/Slice/ProductSlice";
 import { addToCart } from "../../../Redux/Slice/CartSlice";
 
-const Kids = () => {
+const Women = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [priceFilter, setPriceFilter] = useState("");
   const [categoryFilter, setCategoryFilter] = useState("");
@@ -22,7 +21,7 @@ const Kids = () => {
   const [size, setSize] = useState("S");
 
   const dispatch = useDispatch();
-  const type = "kids";
+  const type = "women";
 
   useEffect(() => {
     dispatch(fetchProductsByType(type));
@@ -87,7 +86,7 @@ const Kids = () => {
   return (
     <div className="container mx-auto lg:px-32 lg:py-20">
       <div className="pt-32 lg:pt-10 px-5 lg:px-0">
-        <h3>Kids collection</h3>
+        <h3>Women collection</h3>
         <div className="my-5 leading-7">
           We not only help you design exceptional products, but also make it easy for you <br /> to
           share your designs with more like-minded people.
@@ -318,10 +317,9 @@ const Kids = () => {
                   <div className="flex my-3">
                     <button
                       onClick={() => handleAdd(product)}
-                      className="flex items-center gap-2 bg-black text-white  py-1.5 px-3 rounded-full"
+                      className=" bg-black text-white px-3 py-2 rounded-full"
                     >
-                      <BsFillBagCheckFill /> Add to cart
-                      {/* Same as */}
+                      Add to cart
                     </button>
 
                     {/* Modal Start */}
@@ -473,4 +471,4 @@ const Kids = () => {
   );
 };
 
-export default Kids;
+export default Women;

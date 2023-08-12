@@ -317,10 +317,9 @@ const Sport = () => {
                   <div className="flex my-3">
                     <button
                       onClick={() => handleAdd(product)}
-                      className="flex items-center gap-2 bg-black text-white  py-1.5 px-3 rounded-full"
+                      className=" bg-black text-white px-3 py-2 rounded-full"
                     >
-                      <BsFillBagCheckFill /> Add to cart
-                      {/* Same as */}
+                      Add to cart
                     </button>
 
                     {/* Modal Start */}

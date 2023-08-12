@@ -7,7 +7,7 @@ import Explore from "./Exploring/Explore";
 import Money from "./Money/Money";
 import NewArrivals from "./NewArrivals";
 import SpecialOffer from "./SpecialOffer";
-import AllItems from "./Trending/AllItems";
+import AllItems from "./Ternding/AllItems";
 
 const HomePage = () => {
   return (

@@ -1,40 +1,6 @@
 import { Link } from "react-router-dom";
-import Slider from "react-slick";
 
 const Discover = () => {
-  var settings = {
-    dots: true,
-    infinite: false,
-    speed: 500,
-    slidesToScroll: 1,
-    slidesToShow: 3,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
   const discoData = [
     { id: "03", img: "https://i.ibb.co/mbrRGry/4.png", bg: "#FEE2E2" },
     { id: "01", img: "https://i.ibb.co/thz2GFv/3.png", bg: " #EFF6FF" },

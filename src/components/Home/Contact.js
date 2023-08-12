@@ -6,7 +6,7 @@ import TW from "../../images/footer/twitter.svg";
 import { FcAddressBook, FcGlobe, FcPhone, FcVoicemail } from "react-icons/fc";
 const Contact = () => {
   return (
-    <div className="container mx-auto lg:px-32">
+    <div className="container mx-auto lg:px-32 mt-32 ">
       <h2 className="text-center lg:my-20 my-10">Contact</h2>
       <div className="lg:grid grid-cols-2 gap-10 p-10 ">
         {/* input field here */}

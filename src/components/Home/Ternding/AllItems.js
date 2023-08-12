@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
-import ProductFilter from "../Trending/ProductFilter";
+
+import ProductFilter from "./ProductFilter";
 
 const AllItems = () => {
   return (
