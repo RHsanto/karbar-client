@@ -1,13 +1,114 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* google font */
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap");
+
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Poppins";
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@layer base {
+  h1 {
+    @apply lg:text-6xl text-3xl sm:text-5xl font-semibold;
+  }
+  h2 {
+    @apply lg:text-5xl font-semibold text-3xl md:text-4xl;
+  }
+  h3 {
+    @apply lg:text-4xl text-3xl font-semibold;
+  }
+  h4 {
+    @apply lg:text-2xl text-xl font-semibold;
+  }
+  h5 {
+    @apply text-base font-semibold;
+  }
+  a {
+    font-size: 15px;
+    margin: 0px 16px;
+    cursor: pointer;
+  }
+  p {
+    font-size: 14px;
+  }
+}
+li {
+  list-style: none;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.common-btn,
+.common-btn2,
+.active-btn,
+.hero-btn,
+.hero-btn2 {
+  padding: 12px 24px;
+  font-weight: 500;
+  line-height: 1.25rem;
+  border-radius: 9999px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 2px 8px 40px rgba(0, 0, 0, 0.08);
+  background-color: white;
+}
+.common-btn2 {
+  padding: 8px 16px;
+  border: 1px solid black;
+}
+.active-btn,
+.hero-btn {
+  background-color: black;
+  color: white;
+}
+.hero-btn2 {
+  color: black;
+  background-color: white;
+}
+
+.hero-btn,
+.hero-btn2 {
+  padding: 20px 36px;
+}
+
+.slick-next:before {
+  background-color: #f55c2a;
+  position: absolute;
+  margin-top: -300px;
+  width: 50px;
+  padding: 15px 10px;
+  border-radius: 50%;
+  margin-left: -250px;
+}
+.slick-prev:before {
+  background-color: #f55c2a;
+  position: absolute;
+  margin-top: -300px;
+  margin-left: 1250px;
+  width: 50px;
+  padding: 15px 10px;
+  border-radius: 50%;
+}
+
+@media only screen and (min-width: 200px) and (max-width: 600px) {
+  .slick-prev:before {
+    background-color: #f7503a;
+    position: absolute;
+    width: 50px;
+    margin-left: 350px;
+    padding: 15px 10px;
+    border-radius: 50%;
+    top: 100px;
+  }
+  .slick-next:before {
+    margin-left: -100px;
+    top: 100px;
+  }
+}
+
+.imagesec:hover .select_size {
+  display: block;
 }
