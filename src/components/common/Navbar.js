@@ -157,7 +157,7 @@ const Navbar = () => {
                 <div>
                   <div className="dropdown">
                     <label tabIndex={0} className=" m-1">
-                      <div className="flex items-center gap-2 border-2 border-black p-2 rounded-lg cursor-pointer">
+                      <div className=" flex items-center gap-2 border-2 border-black p-2 rounded-lg cursor-pointer">
                         <BiUser className="text-2xl" />
                         {firstName}
                       </div>
@@ -189,10 +189,10 @@ const Navbar = () => {
         </div>
       </div>
       {/* small device menu */}
-      <div className="lg:hidden flex justify-between p-5 items-center">
+      <div className="lg:hidden flex justify-between  items-center mx-5">
         {/* drawer items */}
         <div>
-          <div className="drawer">
+          <div className="drawer z-50">
             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">
               {/* Page content here */}
@@ -202,7 +202,10 @@ const Navbar = () => {
             </div>
             <div className="drawer-side">
               <label htmlFor="my-drawer" className="drawer-overlay"></label>
-              <div className="menu  w-80 h-full bg-white text-base-content">
+              <div
+                className="menu  w-80 h-full bg-white
+               text-base-content"
+              >
                 {/* Sidebar content here */}
                 <div className="text-center">
                   <Link to="/">
@@ -210,31 +213,21 @@ const Navbar = () => {
                   </Link>
                 </div>
                 <div className="border-t border-b px-2 py-5 font-bold uppercase">
-                  <div className=" hover:bg-slate-100 rounded-lg p-4 cursor-pointer">
-                    <Link to="/men" className="mx-0">
-                      Men
-                    </Link>
-                  </div>
-                  <div className=" hover:bg-slate-100 rounded-lg p-4 cursor-pointer">
-                    <Link to="/women" className="mx-0">
-                      women
-                    </Link>
-                  </div>
-                  <div className=" hover:bg-slate-100 rounded-lg p-4 cursor-pointer">
-                    <Link to="/kids" className="mx-0">
-                      kids
-                    </Link>
-                  </div>
-                  <div className=" hover:bg-slate-100 rounded-lg p-4 cursor-pointer">
-                    <Link to="/sport" className="mx-0">
-                      sport
-                    </Link>
-                  </div>
-                  <div className=" hover:bg-slate-100 rounded-lg p-4 cursor-pointer">
-                    <Link to="/beauty" className="mx-0">
-                      beauty
-                    </Link>
-                  </div>
+                  <Link to="/men" className="mx-0">
+                    <div className=" hover:bg-slate-100 rounded-lg p-4 cursor-pointer">Men</div>
+                  </Link>
+                  <Link to="/women" className="mx-0">
+                    <div className=" hover:bg-slate-100 rounded-lg p-4 cursor-pointer">women</div>
+                  </Link>
+                  <Link to="/kids" className="mx-0">
+                    <div className=" hover:bg-slate-100 rounded-lg p-4 cursor-pointer">kids</div>
+                  </Link>
+                  <Link to="/sport" className="mx-0">
+                    <div className=" hover:bg-slate-100 rounded-lg p-4 cursor-pointer">sport</div>
+                  </Link>
+                  <Link to="/beauty" className="mx-0">
+                    <div className=" hover:bg-slate-100 rounded-lg p-4 cursor-pointer">beauty</div>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -242,12 +235,43 @@ const Navbar = () => {
         </div>
         {/* logo */}
         <Link to="/">
-          <h3>Dokan</h3>
+          <h4>Dokan</h4>
         </Link>
         {/* cart and user */}
-        <div className="flex items-center">
-          <div className="mr-3 text-2xl  border-2 border-black rounded-full p-2">
-            <BiUser />
+        <div className="flex items-center gap-5">
+          {/* Login user info */}
+          <div>
+            {user?.email ? (
+              <div>
+                <div className="dropdown">
+                  <label tabIndex={0} className="m-1">
+                    <div className="flex items-center gap-2 border-2 border-black p-2 rounded-lg cursor-pointer">
+                      <BiUser className="text-2xl" />
+                      {firstName}
+                    </div>
+                  </label>
+                  <div
+                    tabIndex={0}
+                    className=" border dropdown-content  menu p-2 shadow bg-base-100 rounded-box w-52 -ml-10"
+                  >
+                    <div className="p-3.5 rounded-lg mb-2 text-center hover:bg-slate-100">
+                      <Link to="/cart">My Orders</Link>
+                    </div>
+                    <div>
+                      <button onClick={logOut} className="btn btn-error w-full text-white">
+                        Sign out
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div>
+                <Link to="/login">
+                  <button className="btn btn-info text-white">Sign in</button>
+                </Link>
+              </div>
+            )}
           </div>
           {/* cart  */}
           <div>
