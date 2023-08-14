@@ -76,7 +76,7 @@ const Beauty = () => {
               <p>Manufacturer</p>
               <h3 className="mt-2">{data?.name}</h3>
             </div>
-            <Link to="/beauty" className="mx-0">
+            <Link to="/beauty" className="">
               <button className=" hover:text-blue text-left font-bold flex items-center gap-2">
                 See Collection <BsArrowRight />
               </button>

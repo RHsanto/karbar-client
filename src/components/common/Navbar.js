@@ -10,14 +10,15 @@ import useFirebase from "../../hooks/useFirebase";
 
 const Navbar = () => {
   const { user, logOut } = useFirebase();
+  const [activeItem, setActiveItem] = useState("");
+  console.log(activeItem);
   // here get first name
   const firstName = user?.displayName?.split(" ")[0];
-
   const items = useSelector(state => state.cart);
   const dispatch = useDispatch();
   const products = useSelector(state => state.cart);
   const [subTotal, setSubTotal] = useState(0);
-
+  // here slice product for cart
   const sliceProduct = products?.slice(0, 4);
 
   // remove items
@@ -35,36 +36,89 @@ const Navbar = () => {
     setSubTotal(calculatedSubTotal);
   }, [products]);
 
+  // active btn
+  const handleMenuItemClick = itemName => {
+    setActiveItem(itemName);
+  };
+
   return (
     <div className="z-[9999] bg-white sticky  border-b top-0">
       {/* large screen menu */}
       <div className="lg:block hidden">
         <div className=" container px-32 mx-auto  h-20  flex justify-between items-center ">
-          <div className="logo">
-            <Link to="/">
+          <div className="logo ">
+            <Link onClick={() => handleMenuItemClick("")} to="/">
               <h4>Karbar</h4>
             </Link>
           </div>
 
           {/* here start nav items */}
           <div>
-            <div className="font-semibold">
-              <Link to="/men" className="mx-0 hover:bg-offWhite py-3 px-10 rounded-full">
+            <div className="font-semibold gap-2 flex">
+              <Link
+                onClick={() => handleMenuItemClick("men")}
+                to="/men"
+                className={`${
+                  activeItem === "men"
+                    ? "rounded-full bg-black text-white py-3 px-10"
+                    : "  hover:bg-offWhite py-3 px-10 rounded-full"
+                }`}
+              >
                 Men
               </Link>
-              <Link to="/women" className="mx-0 hover:bg-offWhite py-3 px-10 rounded-full">
+              <Link
+                onClick={() => handleMenuItemClick("women")}
+                to="/women"
+                className={`${
+                  activeItem === "women"
+                    ? "rounded-full bg-black text-white py-3 px-10"
+                    : "  hover:bg-offWhite py-3 px-10 rounded-full"
+                }`}
+              >
                 Women
               </Link>
-              <Link to="/beauty" className="mx-0 hover:bg-offWhite py-3 px-10 rounded-full">
+              <Link
+                onClick={() => handleMenuItemClick("beauty")}
+                to="/beauty"
+                className={`${
+                  activeItem === "beauty"
+                    ? "rounded-full bg-black text-white py-3 px-10"
+                    : "  hover:bg-offWhite py-3 px-10 rounded-full"
+                }`}
+              >
                 Beauty
               </Link>
-              <Link to="/kids" className="mx-0 hover:bg-offWhite py-3 px-10 rounded-full">
+              <Link
+                onClick={() => handleMenuItemClick("kids")}
+                to="/kids"
+                className={`${
+                  activeItem === "kids"
+                    ? "rounded-full bg-black text-white py-3 px-10"
+                    : "  hover:bg-offWhite py-3 px-10 rounded-full"
+                }`}
+              >
                 Kids
               </Link>
-              <Link to="/sport" className="mx-0 hover:bg-offWhite py-3 px-10 rounded-full">
+              <Link
+                onClick={() => handleMenuItemClick("sport")}
+                to="/sport"
+                className={`${
+                  activeItem === "sport"
+                    ? "rounded-full bg-black text-white py-3 px-10"
+                    : "  hover:bg-offWhite py-3 px-10 rounded-full"
+                }`}
+              >
                 Sport
               </Link>
-              <Link to="/contact" className="mx-0 hover:bg-offWhite py-3 px-10 rounded-full">
+              <Link
+                onClick={() => handleMenuItemClick("contact")}
+                to="/contact"
+                className={`${
+                  activeItem === "contact"
+                    ? "rounded-full bg-black text-white py-3 px-10"
+                    : "  hover:bg-offWhite py-3 px-10 rounded-full"
+                }`}
+              >
                 Contact
               </Link>
             </div>
@@ -137,10 +191,10 @@ const Navbar = () => {
                       </div>
                       <p>Shipping and taxes calculated at checkout.</p>
                       <div className="flex justify-center p-5 gap-5">
-                        <Link to="/cart" className="mx-0">
+                        <Link onClick={() => handleMenuItemClick("cart")} to="/cart" className="">
                           <button className="btn rounded-full  px-10">View cart</button>
                         </Link>
-                        <Link to="/checkout">
+                        <Link onClick={() => handleMenuItemClick("checkout")} to="/checkout">
                           <button className="btn bg-black rounded-full px-10 text-white">
                             Check out
                           </button>
@@ -167,7 +221,9 @@ const Navbar = () => {
                       className=" dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
                     >
                       <div className="p-3.5 rounded-lg mb-2 text-center hover:bg-slate-100">
-                        <Link to="/cart">My Orders</Link>
+                        <Link onClick={() => handleMenuItemClick("cart")} to="/cart">
+                          My Orders
+                        </Link>
                       </div>
                       <div>
                         <button onClick={logOut} className="btn btn-error w-full text-white">
@@ -179,7 +235,7 @@ const Navbar = () => {
                 </div>
               ) : (
                 <div>
-                  <Link to="/login">
+                  <Link onClick={() => handleMenuItemClick("login")} to="/login">
                     <button className="btn btn-info text-white">Sign in</button>
                   </Link>
                 </div>
@@ -213,19 +269,19 @@ const Navbar = () => {
                   </Link>
                 </div>
                 <div className="border-t border-b px-2 py-5 font-bold uppercase">
-                  <Link to="/men" className="mx-0">
+                  <Link to="/men" className="">
                     <div className=" hover:bg-slate-100 rounded-lg p-4 cursor-pointer">Men</div>
                   </Link>
-                  <Link to="/women" className="mx-0">
+                  <Link to="/women" className="">
                     <div className=" hover:bg-slate-100 rounded-lg p-4 cursor-pointer">women</div>
                   </Link>
-                  <Link to="/kids" className="mx-0">
+                  <Link to="/kids" className="">
                     <div className=" hover:bg-slate-100 rounded-lg p-4 cursor-pointer">kids</div>
                   </Link>
-                  <Link to="/sport" className="mx-0">
+                  <Link to="/sport" className="">
                     <div className=" hover:bg-slate-100 rounded-lg p-4 cursor-pointer">sport</div>
                   </Link>
-                  <Link to="/beauty" className="mx-0">
+                  <Link to="/beauty" className="">
                     <div className=" hover:bg-slate-100 rounded-lg p-4 cursor-pointer">beauty</div>
                   </Link>
                 </div>
@@ -340,7 +396,7 @@ const Navbar = () => {
                     </div>
                     <p>Shipping and taxes calculated at checkout.</p>
                     <div className="flex justify-center p-5 gap-5">
-                      <Link to="/cart" className="mx-0">
+                      <Link to="/cart" className="">
                         <button className="btn rounded-full  px-10">View cart</button>
                       </Link>
                       <Link to="/checkout">

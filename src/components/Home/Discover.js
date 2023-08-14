@@ -25,7 +25,7 @@ const Discover = () => {
                   <p>Explore new arrivals</p>
                   <h4 className="pt-2">Shop the latest from top brands</h4>
 
-                  <Link to="/men" className="mx-0">
+                  <Link to="/men" className="">
                     <button className="common-btn absolute bottom-0 hover:bg-offWhite hover:shadow-lg">
                       Show me all
                     </button>
