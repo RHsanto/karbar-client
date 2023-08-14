@@ -6,8 +6,13 @@ import { BsCart4 } from "react-icons/bs";
 import { TfiMenu } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import { removeFromCart } from "../../Redux/Slice/CartSlice";
+import useFirebase from "../../hooks/useFirebase";
 
 const Navbar = () => {
+  const { user, logOut } = useFirebase();
+  // here get first name
+  const firstName = user?.displayName?.split(" ")[0];
+
   const items = useSelector(state => state.cart);
   const dispatch = useDispatch();
   const products = useSelector(state => state.cart);
@@ -64,11 +69,8 @@ const Navbar = () => {
               </Link>
             </div>
           </div>
-          <div className="flex items-center">
-            <div className="mr-3 text-2xl  border-2 border-black rounded-full p-2">
-              <BiUser />
-            </div>
-            {/* cart  */}
+          <div className="flex items-center gap-8">
+            {/* here cart button*/}
             <div>
               {/* dropdown start */}
               <div className="dropdown dropdown-end">
@@ -148,6 +150,40 @@ const Navbar = () => {
                   </div>
                 </div>
               </div>
+            </div>
+            {/* Login user info */}
+            <div>
+              {user?.email ? (
+                <div>
+                  <div className="dropdown">
+                    <label tabIndex={0} className=" m-1">
+                      <div className="flex items-center gap-2 border-2 border-black p-2 rounded-lg cursor-pointer">
+                        <BiUser className="text-2xl" />
+                        {firstName}
+                      </div>
+                    </label>
+                    <div
+                      tabIndex={0}
+                      className=" dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                    >
+                      <div className="p-3.5 rounded-lg mb-2 text-center hover:bg-slate-100">
+                        <Link to="/cart">My Orders</Link>
+                      </div>
+                      <div>
+                        <button onClick={logOut} className="btn btn-error w-full text-white">
+                          Sign out
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <Link to="/login">
+                    <button className="btn btn-info text-white">Sign in</button>
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>

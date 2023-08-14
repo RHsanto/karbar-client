@@ -24,10 +24,10 @@ const cartSlice = createSlice({
       // Logic to remove a product from the cart
       const productIdToRemove = action.payload;
       const updatedCart = state.filter(item => item._id !== productIdToRemove);
-      state = updatedCart;
 
       // Save updated cart to localStorage
-      localStorage.setItem("cart", JSON.stringify(state));
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+      return updatedCart;
     },
     incrementQuantity: (state, action) => {
       // Find the product in the cart by ID and increment its quantity

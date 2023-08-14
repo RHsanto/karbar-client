@@ -49,7 +49,7 @@ const Cart = () => {
 
   return (
     <div className="container mx-auto lg:px-32 py-10">
-      <h3 className="my-20">Shopping Cart</h3>
+      <h3 className="my-10">Shopping Cart</h3>
       <div className="border-t my-10">
         <div className="grid grid-cols-3">
           <div className="col-span-2 p-5">
