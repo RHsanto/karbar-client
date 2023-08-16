@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useFirebase from "../../../hooks/useFirebase";
+import { useDispatch } from "react-redux";
+import { login } from "../../../Redux/Slice/AuthSlice";
 
 const Login = () => {
   const { signInUsingGoogle, loginUser, error } = useFirebase();
@@ -11,10 +13,11 @@ const Login = () => {
   const redirect_uri = location.state?.from || "/";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const dispatch = useDispatch();
   const handleGoogle = e => {
     signInUsingGoogle().then(result => {
       const user = result.user;
+      dispatch(login());
       navigate(redirect_uri);
     });
   };
@@ -30,6 +33,7 @@ const Login = () => {
   const handleSignIn = e => {
     loginUser(email, password, location);
     e.preventDefault();
+    dispatch(login());
   };
 
   return (

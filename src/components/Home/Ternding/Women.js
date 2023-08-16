@@ -66,21 +66,9 @@ const Women = () => {
   };
 
   // set size selected
-
-  const handleS = () => {
-    setSize("S");
-  };
-  const handleM = () => {
-    setSize("M");
-  };
-  const handleL = () => {
-    setSize("L");
-  };
-  const handleXL = () => {
-    setSize("XL");
-  };
-  const handleXXL = () => {
-    setSize("XXL");
+  // set size selected
+  const handleSize = size => {
+    setSize(size);
   };
 
   return (
@@ -375,7 +363,7 @@ const Women = () => {
                                       <h5>Size: {size}</h5>
                                       <div className="flex justify-between gap-2 my-3  font-bold">
                                         <div
-                                          onClick={handleS}
+                                          onClick={() => handleSize("S")}
                                           className={` ${
                                             size === "S" && "bg-blue text-white"
                                           } border   cursor-pointer  border-blue px-4 py-2 rounded-lg`}
@@ -383,7 +371,7 @@ const Women = () => {
                                           S
                                         </div>
                                         <div
-                                          onClick={handleL}
+                                          onClick={() => handleSize("L")}
                                           className={`${
                                             size === "L" && "bg-blue text-white"
                                           } border  cursor-pointer  border-blue px-4 py-2 rounded-lg`}
@@ -391,7 +379,7 @@ const Women = () => {
                                           L
                                         </div>
                                         <div
-                                          onClick={handleM}
+                                          onClick={() => handleSize("M")}
                                           className={`${
                                             size === "M" && "bg-blue text-white"
                                           } border   cursor-pointer  border-blue px-4 py-2 rounded-lg`}
@@ -399,7 +387,7 @@ const Women = () => {
                                           M
                                         </div>
                                         <div
-                                          onClick={handleXL}
+                                          onClick={() => handleSize("XL")}
                                           className={`${
                                             size === "XL" && " bg-blue text-white"
                                           } border   cursor-pointer  border-blue px-4 py-2 rounded-lg`}
@@ -407,7 +395,7 @@ const Women = () => {
                                           XL
                                         </div>
                                         <div
-                                          onClick={handleXXL}
+                                          onClick={() => handleSize("XXL")}
                                           className={`${
                                             size === "XXL" && " bg-blue text-white"
                                           } border   cursor-pointer  border-blue px-4 py-2 rounded-lg`}

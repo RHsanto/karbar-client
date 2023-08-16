@@ -11,7 +11,6 @@ import useFirebase from "../../hooks/useFirebase";
 const Navbar = () => {
   const { user, logOut } = useFirebase();
   const [activeItem, setActiveItem] = useState("");
-  console.log(activeItem);
   // here get first name
   const firstName = user?.displayName?.split(" ")[0];
   const items = useSelector(state => state.cart);
@@ -20,6 +19,8 @@ const Navbar = () => {
   const [subTotal, setSubTotal] = useState(0);
   // here slice product for cart
   const sliceProduct = products?.slice(0, 4);
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  console.log("auth", isAuthenticated);
 
   // remove items
   const handleRemove = productId => {
@@ -218,7 +219,7 @@ const Navbar = () => {
                     </label>
                     <div
                       tabIndex={0}
-                      className=" dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
+                      className=" dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 border"
                     >
                       <div className="p-3.5 rounded-lg mb-2 text-center hover:bg-slate-100">
                         <Link onClick={() => handleMenuItemClick("cart")} to="/cart">

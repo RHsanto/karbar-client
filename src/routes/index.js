@@ -14,6 +14,7 @@ import Checkout from "../components/Home/Cart/Checkout";
 
 import Login from "../components/Home/Authentication/Login";
 import SignUp from "../components/Home/Authentication/SignUp";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const Index = () => {
   return (
@@ -29,7 +30,14 @@ const Index = () => {
         <Route path="/sport" element={<Sport />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/checkout" element={<Checkout />} />
+        <Route
+          path="/checkout"
+          element={
+            <PrivateRoute>
+              <Checkout />
+            </PrivateRoute>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
       </Routes>
