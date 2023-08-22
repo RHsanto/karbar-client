@@ -19,8 +19,8 @@ const Navbar = () => {
   const [subTotal, setSubTotal] = useState(0);
   // here slice product for cart
   const sliceProduct = products?.slice(0, 4);
-  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-  console.log("auth", isAuthenticated);
+  // const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  // console.log("auth", isAuthenticated);
 
   // remove items
   const handleRemove = productId => {
