@@ -15,7 +15,7 @@ const Checkout = () => {
     console.log(data);
     data.orders = products;
 
-    axios.post("http://localhost:8000/orders", data).then(res => {
+    axios.post("https://dokan-backend.onrender.com/orders", data).then(res => {
       if (res.data) {
         toast.success("Order Successfully", {
           position: "top-right",

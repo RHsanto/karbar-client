@@ -4,7 +4,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const fetchProductsByType = createAsyncThunk("products/fetchProductsByType", async type => {
-  const res = await axios.get(`https://dokan-backend.onrender.com/Products?type=${type}`);
+  const res = await axios.get(`https://dokan-backend.onrender.com/products?type=${type}`);
   return res.data;
 });
 
