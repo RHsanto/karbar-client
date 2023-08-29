@@ -10,6 +10,7 @@ import useFirebase from "../../hooks/useFirebase";
 
 const Navbar = () => {
   const { user, logOut } = useFirebase();
+  // console.log(user);
   const [activeItem, setActiveItem] = useState("");
   // here get first name
   const firstName = user?.displayName?.split(" ")[0];

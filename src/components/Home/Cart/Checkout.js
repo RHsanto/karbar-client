@@ -5,29 +5,26 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaShippingFast } from "react-icons/fa";
 import { useSelector } from "react-redux";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Payment from "./Payments/Payment";
 
 const Checkout = () => {
   const [countries, setCountries] = useState([]);
+  const products = useSelector(state => state.cart);
+  const [subTotal, setSubTotal] = useState(0);
+  const [total, setTotal] = useState(0);
+  const shipping = 30;
+  const tax = 56;
+
   const { register, handleSubmit, reset } = useForm();
+
+  // Form submit button
   const onSubmit = data => {
-    console.log(data);
+    // console.log(data);
     data.orders = products;
+    data.payment = "pending";
 
     axios.post("https://dokan-backend.onrender.com/orders", data).then(res => {
-      if (res.data) {
-        toast.success("Order Successfully", {
-          position: "top-right",
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-        reset();
-      }
+      reset();
     });
   };
 
@@ -43,15 +40,6 @@ const Checkout = () => {
   }, []);
 
   // order calculation
-  // const dispatch = useDispatch();
-  const products = useSelector(state => state.cart);
-
-  const [subTotal, setSubTotal] = useState(0);
-  const [total, setTotal] = useState(0);
-
-  const shipping = 30;
-  const tax = 56;
-
   useEffect(() => {
     // Calculate subtotal and total whenever the cart changes
     let calculatedSubTotal = 0;
@@ -168,25 +156,8 @@ const Checkout = () => {
                     placeholder="Address"
                   ></textarea>
                 </div>
-                {/* confirm btn */}
-
-                <button
-                  type="submit"
-                  className="btn btn-active btn-neutral rounded-full text-white px-10 mt-10"
-                >
-                  save and next to payment
-                  <ToastContainer
-                    position="top-right"
-                    autoClose={5000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                  />
-                </button>
+                {/* payment btn */}
+                <Payment cartItems={products} />
               </div>
             </form>
           </div>
