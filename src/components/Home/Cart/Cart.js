@@ -17,6 +17,7 @@ const Cart = () => {
   const handleRemove = productId => {
     dispatch(removeFromCart(productId));
   };
+
   const [subTotal, setSubTotal] = useState(0);
   const [total, setTotal] = useState(0);
 

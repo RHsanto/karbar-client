@@ -4,8 +4,9 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaShippingFast } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Payment from "./Payments/Payment";
+import { clearCart } from "../../../Redux/Slice/CartSlice";
 
 const Checkout = () => {
   const [countries, setCountries] = useState([]);
@@ -14,6 +15,7 @@ const Checkout = () => {
   const [total, setTotal] = useState(0);
   const shipping = 30;
   const tax = 56;
+  const dispatch = useDispatch();
 
   const { register, handleSubmit, reset } = useForm();
 
@@ -26,6 +28,8 @@ const Checkout = () => {
     axios.post("https://dokan-backend.onrender.com/orders", data).then(res => {
       reset();
     });
+
+    dispatch(clearCart());
   };
 
   // country api call
