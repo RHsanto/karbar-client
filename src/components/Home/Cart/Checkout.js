@@ -28,7 +28,7 @@ const Checkout = () => {
     axios.post("https://dokan-backend.onrender.com/orders", data).then(res => {
       reset();
     });
-
+    // here clear all cart items
     dispatch(clearCart());
   };
 

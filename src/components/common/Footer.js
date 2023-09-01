@@ -55,14 +55,6 @@ const Footer = () => {
               <div>Jewels</div>
             </div>
           </div>
-          {/* <div className='p-5 lg:p-0'>
-      <h5>Subscribe For Newsletter</h5>
-      <p className='my-5'>Be the first one to know about discounts,offers and events. Unsubscribe whenever you like.</p>
-      <div className="flex gap-3">
-      <input type="email" className='outline-none px-2 border-2 w-96 h-12 rounded' />
-      <button className='bg-black rounded text-white px-4'>Subscribe</button>
-      </div>
-      </div> */}
         </div>
       </div>
     </div>

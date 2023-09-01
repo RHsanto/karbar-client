@@ -52,7 +52,7 @@ const Contact = () => {
             <h5 className="mb-2 flex items-center gap-1">
               <FcVoicemail className="text-2xl" /> EMAIL
             </h5>
-            <>dokan123@gmail.com</>
+            <>karbar123@gmail.com</>
           </div>
           <div className="mb-10 ">
             <h5 className="mb-2 flex items-center gap-1">
@@ -64,17 +64,17 @@ const Contact = () => {
             <h5 className="flex items-center gap-1">
               <FcGlobe className="text-2xl" /> SOCIALS LINK
             </h5>
-            <div className="flex my-5">
-              <a href="https://www.facebook.com">
+            <div className="flex my-5 gap-4">
+              <a target="_blank" href="https://www.facebook.com" rel="noreferrer">
                 <img src={FB} alt="" className="w-6 h-6" />
               </a>
-              <a href="https://www.youtube.com">
+              <a target="_blank" href="https://www.youtube.com" rel="noreferrer">
                 <img src={YT} alt="" className="w-6 h-6" />
               </a>
-              <a href="https://web.telegram.org">
+              <a target="_blank" href="https://web.telegram.org" rel="noreferrer">
                 <img src={TG} alt="" className="w-6 h-6" />
               </a>
-              <a href="https://twitter.com">
+              <a target="_blank" href="https://twitter.com" rel="noreferrer">
                 <img src={TW} alt="" className="w-6 h-6" />
               </a>
             </div>
