@@ -36,7 +36,7 @@ const OneBox = () => {
 
   return (
     <div>
-      <div className=" imagesec cursor-pointer bg-bgWhite rounded-2xl relative lg:h-[300px]">
+      <div className=" hover_img cursor-pointer bg-bgWhite rounded-2xl relative lg:h-[300px]">
         {catColor === "yellow" && <img src={img} alt="img" />}
         {catColor === "blue" && <img src={img2} alt="img" />}
         {catColor === "red" && <img src={img3} alt="img" />}

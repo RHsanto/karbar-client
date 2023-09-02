@@ -7,7 +7,7 @@ import { TfiMenu } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import { removeFromCart } from "../../Redux/Slice/CartSlice";
 import useFirebase from "../../hooks/useFirebase";
-
+import logo from "../../images/logo.PNG";
 const Navbar = () => {
   const { user, logOut } = useFirebase();
   // console.log(user);
@@ -20,8 +20,6 @@ const Navbar = () => {
   const [subTotal, setSubTotal] = useState(0);
   // here slice product for cart
   const sliceProduct = products?.slice(0, 4);
-  // const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
-  // console.log("auth", isAuthenticated);
 
   // remove items
   const handleRemove = productId => {
@@ -48,9 +46,9 @@ const Navbar = () => {
       {/* large screen menu */}
       <div className="lg:block hidden">
         <div className=" container px-32 mx-auto  h-20  flex justify-between items-center ">
-          <div className="logo ">
-            <Link onClick={() => handleMenuItemClick("")} to="/">
-              <h4>Karbar</h4>
+          <div className="logo">
+            <Link className=" flex items-center" onClick={() => handleMenuItemClick("")} to="/">
+              <img className="w-[50px]" src={logo} alt="" srcset="" /> <h4> Karbar</h4>
             </Link>
           </div>
 
@@ -292,8 +290,8 @@ const Navbar = () => {
           </div>
         </div>
         {/* logo */}
-        <Link to="/">
-          <h4>Dokan</h4>
+        <Link className=" flex items-center" to="/">
+          <img className="w-[50px]" src={logo} alt="" srcset="" /> <h4> Karbar</h4>
         </Link>
         {/* cart and user */}
         <div className="flex items-center gap-5">

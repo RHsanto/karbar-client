@@ -8,6 +8,7 @@ import Money from "./Money/Money";
 import NewArrivals from "./NewArrivals";
 import SpecialOffer from "./SpecialOffer";
 import AllItems from "./Ternding/AllItems";
+import Testimonial from "./Testimonial";
 
 const HomePage = () => {
   return (
@@ -22,8 +23,7 @@ const HomePage = () => {
       <AllItems />
       <Department />
       <OurExperts />
-      {/* <Testimonial/> */}
-      {/* <MyPage/> */}
+      <Testimonial />
     </div>
   );
 };

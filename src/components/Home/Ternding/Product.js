@@ -31,7 +31,7 @@ const Product = ({ product }) => {
   return (
     <div>
       {/* here set img  */}
-      <div className=" imagesec bg-gray-100 rounded-2xl relative lg:h-[340px]">
+      <div className=" hover_img bg-gray-100 rounded-2xl relative lg:h-[340px]">
         <img src={product?.productImg} alt="img" />
         {/* here top msg */}
         {product?.message ? (
@@ -45,8 +45,8 @@ const Product = ({ product }) => {
           ""
         )}
         {/* here hover items */}
-        <div className="hidden absolute left-4 bottom-3 select_size ">
-          <div className="flex my-3">
+        <div className="hidden absolute left-16 lg:left-4 bottom-3 select_size ">
+          <div className="flex my-3 justify-between">
             <button
               onClick={() => handleAdd(product)}
               className=" bg-black text-white px-3 py-2 rounded-full"

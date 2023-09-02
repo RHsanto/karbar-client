@@ -286,7 +286,7 @@ const Sport = () => {
           {filteredProducts.map(product => (
             <div key={product?._id}>
               {/* here set img  */}
-              <div className=" imagesec bg-gray-100 rounded-2xl relative lg:h-[340px]">
+              <div className=" hover_img bg-gray-100 rounded-2xl relative lg:h-[340px]">
                 <img src={product?.productImg} alt="img" />
                 {/* here top msg */}
                 {product?.message ? (
