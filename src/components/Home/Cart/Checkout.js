@@ -175,15 +175,15 @@ const Checkout = () => {
           </div>
           <div className="flex justify-between py-4 border-b ">
             <span className="text-slate-500">Shipping estimate</span>
-            <h5>${shipping}</h5>
+            <h5>$ {subTotal === 0 ? "0" : <>{shipping}</>} </h5>
           </div>
           <div className="flex justify-between py-4 border-b ">
             <span className="text-slate-500">Tax estimate</span>
-            <h5>${tax}</h5>
+            <h5>${subTotal === 0 ? "0" : <>{tax}</>}</h5>
           </div>
           <div className="flex justify-between py-4  ">
             <span className="text-[20px] font-bold">Order total</span>
-            <h5>${total.toFixed(2)}</h5>
+            <h5>${subTotal === 0 ? "0" : <>{total.toFixed(2)}</>}</h5>
           </div>
         </div>
       </div>

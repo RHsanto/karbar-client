@@ -1,17 +1,22 @@
 import axios from "axios";
 
 const Payment = ({ cartItems }) => {
-  const handleCheckout = () => {
-    axios
-      .post(`https://dokan-backend.onrender.com/create-checkout-session`, {
-        cartItems,
-      })
-      .then(response => {
-        if (response.data.url) {
-          window.location.href = response.data.url;
+  const handleCheckout = async () => {
+    try {
+      const response = await axios.post(
+        `https://dokan-backend.onrender.com/create-checkout-session`,
+        {
+          cartItems,
         }
-      })
-      .catch(err => console.log(err.message));
+      );
+
+      if (response.data.url) {
+        window.location.href = response.data.url;
+      }
+    } catch (err) {
+      console.error(err.message);
+    }
+
     console.log(cartItems);
   };
 
