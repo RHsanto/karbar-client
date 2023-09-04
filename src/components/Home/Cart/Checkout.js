@@ -16,7 +16,6 @@ const Checkout = () => {
   const shipping = 30;
   const tax = 56;
   const dispatch = useDispatch();
-
   const { register, handleSubmit, reset } = useForm();
 
   // Form submit button
@@ -63,6 +62,7 @@ const Checkout = () => {
   return (
     <div className="container mx-auto lg:px-32">
       <h3 className="mt-10 px-10">Checkout</h3>
+
       <div className="lg:grid grid-cols-3 my-10 gap-10 lg:p-0 p-10">
         {/* shipping info */}
         <div className="col-span-2 ">

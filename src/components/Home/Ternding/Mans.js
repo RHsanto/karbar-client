@@ -334,7 +334,7 @@ const Mans = () => {
                                   {/* img section */}
                                   <div>
                                     <div className="bg-gray-100 rounded-2xl relative h-full ">
-                                      <img src={product?.productImg} alt="img" srcset="" />
+                                      <img src={product?.productImg} alt="img" srcSet="" />
                                     </div>
                                     <small className="absolute top-10 left-10">
                                       <button className="flex gap-1 items-center shadow-lg bg-white px-4 py-1 rounded-full ">

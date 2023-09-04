@@ -19,7 +19,7 @@ const HeroSection = () => {
           </button>
         </div>
         <div>
-          <img src={HI} alt="" srcset="" />
+          <img src={HI} alt="" srcSet="" />
         </div>
       </div>
     </div>

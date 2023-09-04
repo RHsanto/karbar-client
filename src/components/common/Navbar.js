@@ -11,10 +11,11 @@ import logo from "../../images/logo.PNG";
 const Navbar = () => {
   const { user, logOut } = useFirebase();
   // console.log(user);
+
   const [activeItem, setActiveItem] = useState("");
-  // here get first name
   const firstName = user?.displayName?.split(" ")[0];
   const items = useSelector(state => state.cart);
+  // console.log(items);
   const dispatch = useDispatch();
   const products = useSelector(state => state.cart);
   const [subTotal, setSubTotal] = useState(0);
@@ -48,7 +49,7 @@ const Navbar = () => {
         <div className=" container px-32 mx-auto  h-20  flex justify-between items-center ">
           <div className="logo">
             <Link className=" flex items-center" onClick={() => handleMenuItemClick("")} to="/">
-              <img className="w-[50px]" src={logo} alt="" srcset="" /> <h4> Karbar</h4>
+              <img className="w-[50px]" src={logo} alt="" /> <h4> Karbar</h4>
             </Link>
           </div>
 
@@ -191,14 +192,19 @@ const Navbar = () => {
                       </div>
                       <p>Shipping and taxes calculated at checkout.</p>
                       <div className="flex justify-center p-5 gap-5">
-                        <Link onClick={() => handleMenuItemClick("cart")} to="/cart" className="">
-                          <button className="btn rounded-full  px-10">View cart</button>
-                        </Link>
-                        <Link onClick={() => handleMenuItemClick("checkout")} to="/checkout">
-                          <button className="btn bg-black rounded-full px-10 text-white">
+                        <button className="btn rounded-full  px-10">
+                          <Link onClick={() => handleMenuItemClick("cart")} to="/cart" className="">
+                            View cart
+                          </Link>
+                        </button>
+                        <button
+                          disabled={!items?.length}
+                          className="btn bg-black rounded-full px-10 text-white"
+                        >
+                          <Link onClick={() => handleMenuItemClick("checkout")} to="/checkout">
                             Check out
-                          </button>
-                        </Link>
+                          </Link>
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -291,7 +297,7 @@ const Navbar = () => {
         </div>
         {/* logo */}
         <Link className=" flex items-center" to="/">
-          <img className="w-[50px]" src={logo} alt="" srcset="" /> <h4> Karbar</h4>
+          <img className="w-[50px]" src={logo} alt="" /> <h4> Karbar</h4>
         </Link>
         {/* cart and user */}
         <div className="flex items-center gap-5">
