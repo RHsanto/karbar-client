@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Product from "./Product";
 import { fetchProductsByType } from "../../../Redux/Slice/ProductSlice";
+import Skeleton from "../Skeleton";
 
 const ProductFilter = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -115,11 +116,16 @@ const ProductFilter = () => {
 
       {/* Display Filtered Products */}
       <div className="lg:grid grid-cols-4 gap-8 p-10 lg:p-0">
-        {loading && <h5>Loading....</h5>}
         {error && <h5 className="text-red">Internal server error....</h5>}
-        {filteredProducts.map(product => (
-          <Product key={product._id} product={product} />
-        ))}
+        {loading ? (
+          <Skeleton />
+        ) : (
+          <>
+            {filteredProducts.map(product => (
+              <Product key={product._id} product={product} />
+            ))}
+          </>
+        )}
       </div>
     </div>
   );
