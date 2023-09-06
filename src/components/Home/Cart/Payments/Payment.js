@@ -17,7 +17,7 @@ const Payment = ({ cartItems }) => {
       console.error(err.message);
     }
 
-    console.log(cartItems);
+    // console.log(cartItems);
   };
 
   return (

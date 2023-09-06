@@ -38,7 +38,7 @@ const Testimonial = () => {
                 className="mySwiper"
               >
                 <SwiperSlide>
-                  <div>
+                  <div className="shadow-lg bg-white p-7 rounded-lg">
                     <span className="leading-8">
                       It is a long established fact that a reader will be distracted by the readable
                       content of a page when looking at its layout. The point of using Lorem Ipsum
@@ -55,7 +55,7 @@ const Testimonial = () => {
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <div>
+                  <div className="shadow-lg bg-white p-7 rounded-lg">
                     <span className="leading-8">
                       It is a long established fact that a reader will be distracted by the readable
                       content of a page when looking at its layout. The point of using Lorem Ipsum
@@ -72,7 +72,7 @@ const Testimonial = () => {
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <div>
+                  <div className="shadow-lg bg-white p-7 rounded-lg">
                     <span className="leading-8">
                       It is a long established fact that a reader will be distracted by the readable
                       content of a page when looking at its layout. The point of using Lorem Ipsum

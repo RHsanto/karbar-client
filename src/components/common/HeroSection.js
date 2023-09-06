@@ -1,6 +1,7 @@
 import React from "react";
 import { BsSearch } from "react-icons/bs";
 import HI from "../../images/hi.png";
+import { Link } from "react-router-dom";
 const HeroSection = () => {
   return (
     <div
@@ -15,7 +16,8 @@ const HeroSection = () => {
             for everyone
           </h1>
           <button className="hero-btn flex items-center gap-3">
-            Explore Now <BsSearch />
+            <Link to="/women">Explore Now</Link>
+            <BsSearch />
           </button>
         </div>
         <div>
