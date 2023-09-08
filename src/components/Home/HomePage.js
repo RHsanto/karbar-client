@@ -1,4 +1,5 @@
 import HeroSection from "../common/HeroSection";
+import AddsModel from "./Adds/AddsModel";
 import AllStep from "./AllStep";
 import Department from "./Department";
 import Discover from "./Discover";
@@ -24,6 +25,7 @@ const HomePage = () => {
       <Department />
       <OurExperts />
       <Testimonial />
+      <AddsModel />
     </div>
   );
 };

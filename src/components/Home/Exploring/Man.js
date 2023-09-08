@@ -4,14 +4,6 @@ import { Link } from "react-router-dom";
 const Man = () => {
   const product = [
     {
-      id: "01",
-      name: "Backpack",
-      product: "214",
-      bgColor: "#DFE5ED",
-      proImg: "https://i.ibb.co/sFhcp2C/1.png",
-      bgImg: "https://i.ibb.co/k4FDKvz/1.png",
-    },
-    {
       id: "12",
       name: "Car Coat",
       product: "214",
@@ -58,46 +50,6 @@ const Man = () => {
       bgColor: "#DFE5ED",
       proImg: "https://i.ibb.co/dDG7CYk/6.png",
       bgImg: "https://i.ibb.co/SPn0F0q/5.png",
-    },
-    {
-      id: "07",
-      name: "Backpack",
-      product: "214",
-      bgColor: "#DFE5ED",
-      proImg: "https://i.ibb.co/sFhcp2C/1.png",
-      bgImg: "https://i.ibb.co/k4FDKvz/1.png",
-    },
-    {
-      id: "08",
-      name: "Shoes",
-      product: "316",
-      bgColor: "#FEE2E2",
-      proImg: "https://i.ibb.co/RH3BB6W/2.png",
-      bgImg: "https://i.ibb.co/wz82VQP/2.png",
-    },
-    {
-      id: "09",
-      name: "Cycling Shorts",
-      product: "214",
-      bgColor: "#E3FFE6",
-      proImg: "https://i.ibb.co/wS2zWbg/4.png",
-      bgImg: "https://i.ibb.co/Yt92Cfm/6.png",
-    },
-    {
-      id: "10",
-      name: "Cycling Jersey",
-      product: "214",
-      bgColor: "#FEF9C3",
-      proImg: "https://i.ibb.co/VmCj2QV/5.png",
-      bgImg: "https://i.ibb.co/ZW4Yd6G/3.png",
-    },
-    {
-      id: "11",
-      name: "Recycled Blanket",
-      product: "214",
-      bgColor: "#F3E8FF",
-      proImg: "https://i.ibb.co/TYPxJwQ/3.png",
-      bgImg: "https://i.ibb.co/F0dwcF9/4.png",
     },
   ];
 
