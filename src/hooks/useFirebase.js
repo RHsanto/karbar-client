@@ -13,6 +13,9 @@ import initAuthentication from "../components/Firebase/Firebase-init";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
+import { useDispatch } from "react-redux";
+import { clearCart } from "../Redux/Slice/CartSlice";
+
 initAuthentication();
 
 const useFirebase = () => {
@@ -24,15 +27,16 @@ const useFirebase = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const redirect_uri = location.state?.from || "/";
-
+  const dispatch = useDispatch();
   const signInUsingGoogle = () => {
     return signInWithPopup(auth, provider).catch(error => {
       setError(error.message);
     });
   };
 
-  //  here start email authentication
-
+  const clearItems = () => {
+    dispatch(clearCart());
+  };
   //create user
   const registerUser = (name, email, password) => {
     setIsLoading(true);
@@ -79,6 +83,8 @@ const useFirebase = () => {
 
   //  here use ing logout
   const logOut = () => {
+    // Clear Cart when user logout
+    dispatch(clearCart());
     setIsLoading(true);
     signOut(auth)
       .then(() => {

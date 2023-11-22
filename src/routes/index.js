@@ -17,6 +17,7 @@ import SignUp from "../components/Home/Authentication/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Failed from "../components/Home/Cart/Payments/Failed";
 import Success from "../components/Home/Cart/Payments/Success";
+import UserDash from "../components/Home/Cart/UserDashboard/UserDash";
 
 const Index = () => {
   return (
@@ -44,6 +45,7 @@ const Index = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/checkout-cancel" element={<Failed />} />
         <Route path="/checkout-success" element={<Success />} />
+        <Route path="/userDash" element={<UserDash />} />
       </Routes>
       <Footer />
     </BrowserRouter>

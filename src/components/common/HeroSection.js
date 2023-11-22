@@ -1,6 +1,6 @@
 import React from "react";
 import { BsSearch } from "react-icons/bs";
-import HI from "../../images/hi.png";
+import HI from "../../images/test.png";
 import { Link } from "react-router-dom";
 const HeroSection = () => {
   return (
@@ -8,7 +8,7 @@ const HeroSection = () => {
       className="container mx-auto lg:px-32  bg-[#FEE2E2]
      rounded-lg mb-20"
     >
-      <div className="lg:grid grid-cols-2 items-center gap-10 lg:p-0 p-10">
+      <div className="lg:grid grid-cols-2 items-center gap-10 lg:p-0 p-10 my-10">
         <div>
           <h5>In this season, find the best 🔥</h5>
           <h1 className="my-10 lg:leading-[75px]">
@@ -21,7 +21,7 @@ const HeroSection = () => {
           </button>
         </div>
         <div>
-          <img src={HI} alt="" srcSet="" />
+          <img src={HI} alt="" className="" />
         </div>
       </div>
     </div>

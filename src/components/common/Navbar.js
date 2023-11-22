@@ -1,5 +1,7 @@
 /* eslint-disable array-callback-return */
-import { BiUser } from "react-icons/bi";
+import { BiLogOutCircle, BiUser } from "react-icons/bi";
+import { FaUserAlt } from "react-icons/fa";
+import { LuClipboardList } from "react-icons/lu";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { BsCart4 } from "react-icons/bs";
@@ -226,14 +228,19 @@ const Navbar = () => {
                       tabIndex={0}
                       className=" dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 border"
                     >
-                      <div className="p-3.5 rounded-lg mb-2 text-center hover:bg-slate-100">
-                        <Link onClick={() => handleMenuItemClick("cart")} to="/cart">
-                          My Orders
-                        </Link>
-                      </div>
+                      <Link to="/userDash">
+                        <button className="p-3 rounded-lg mb-2 text-center hover:bg-slate-200 w-full flex font-bold items-center  gap-3">
+                          <FaUserAlt className="text-[20px]" /> My Account
+                        </button>
+                      </Link>
+                      <Link onClick={() => handleMenuItemClick("cart")} to="/cart">
+                        <button className="p-3 rounded-lg mb-2 text-center hover:bg-slate-200 w-full flex font-bold items-center  gap-3">
+                          <LuClipboardList className="text-2xl" /> My Orders
+                        </button>
+                      </Link>
                       <div>
-                        <button onClick={logOut} className="btn btn-error w-full text-white">
-                          Sign out
+                        <button onClick={logOut} className="btn bg-red w-full text-white">
+                          <BiLogOutCircle className="text-2xl" /> Sign out
                         </button>
                       </div>
                     </div>

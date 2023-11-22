@@ -32,7 +32,6 @@ const Cart = () => {
     });
 
     // In this example, we'll assume shipping and tax amounts
-
     const calculatedTotal = calculatedSubTotal + shipping + tax;
 
     setSubTotal(calculatedSubTotal);
