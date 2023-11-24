@@ -18,11 +18,12 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Failed from "../components/Home/Cart/Payments/Failed";
 import Success from "../components/Home/Cart/Payments/Success";
 import UserDash from "../components/Home/Cart/UserDashboard/UserDash";
+import DashTemplate from "../components/AdminDashboard/DashTemplate";
 
 const Index = () => {
   return (
     <BrowserRouter>
-      <Navbar />
+      {/* <Navbar /> */}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/men" element={<Mans />} />
@@ -46,8 +47,9 @@ const Index = () => {
         <Route path="/checkout-cancel" element={<Failed />} />
         <Route path="/checkout-success" element={<Success />} />
         <Route path="/userDash" element={<UserDash />} />
+        <Route path="/adminDash" element={<DashTemplate />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </BrowserRouter>
   );
 };

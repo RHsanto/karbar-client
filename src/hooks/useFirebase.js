@@ -12,10 +12,11 @@ import {
 import initAuthentication from "../components/Firebase/Firebase-init";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
 import { useDispatch } from "react-redux";
 import { clearCart } from "../Redux/Slice/CartSlice";
+import axios from "axios";
 
+// firebase inti
 initAuthentication();
 
 const useFirebase = () => {
@@ -28,15 +29,14 @@ const useFirebase = () => {
   const navigate = useNavigate();
   const redirect_uri = location.state?.from || "/";
   const dispatch = useDispatch();
+
+  // Google
   const signInUsingGoogle = () => {
     return signInWithPopup(auth, provider).catch(error => {
       setError(error.message);
     });
   };
 
-  const clearItems = () => {
-    dispatch(clearCart());
-  };
   //create user
   const registerUser = (name, email, password) => {
     setIsLoading(true);
@@ -49,7 +49,7 @@ const useFirebase = () => {
         const newUser = { email, displayName: name };
         setUser(newUser);
         //save user to database
-        // emailUser(email, name);
+        emailUser(email, name);
         //send name to firebase
         updateProfile(auth.currentUser, {
           displayName: name,
@@ -109,30 +109,18 @@ const useFirebase = () => {
     return () => unsubscribed;
   }, [auth]);
 
-  // //save user info to database
-  // const emailUser = (email, displayName) => {
-  //   const user = { email, displayName,role:"user" };
-  //   fetch("https://mr-travel-server.onrender.com/users", {
-  //     method: "POST",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(user),
-  //   }).then();
-  // };
+  //save user info to database
+  const emailUser = (email, displayName) => {
+    const user = { email, displayName, role: "user" };
+    axios.post("https://dokan-backend.onrender.com/users", user).then();
+  };
 
-  // // save google user info to database
+  // save google user info to database
 
-  // const GoogleUser = (email, displayName) => {
-  //   const user = { email, displayName,role:"user" };
-  //   fetch("https://mr-travel-server.onrender.com/users", {
-  //     method: "PUT",
-  //     headers: {
-  //       "content-type": "application/json",
-  //     },
-  //     body: JSON.stringify(user),
-  //   }).then();
-  // };
+  const GoogleUser = (email, displayName) => {
+    const user = { email, displayName, role: "user" };
+    axios.post("https://dokan-backend.onrender.com/users", user).then();
+  };
 
   return {
     signInUsingGoogle,
@@ -144,6 +132,7 @@ const useFirebase = () => {
     setUser,
     setError,
     isLoading,
+    GoogleUser,
   };
 };
 

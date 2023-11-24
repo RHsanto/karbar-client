@@ -79,3 +79,17 @@ li {
 .hover_img:hover .select_size {
   display: block;
 }
+
+/* Admin Dash Nav */
+
+.adminDash-nav li {
+  padding: 12px;
+  display: flex;
+  gap: 8px;
+  border-radius: 5px;
+}
+.active-nav,
+.adminDash-nav li:hover {
+  background: #0ea5e9;
+  color: white;
+}

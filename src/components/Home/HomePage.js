@@ -1,4 +1,6 @@
+import Footer from "../common/Footer";
 import HeroSection from "../common/HeroSection";
+import Navbar from "../common/Navbar";
 import AddsModel from "./Adds/AddsModel";
 import AllStep from "./AllStep";
 import Department from "./Department";
@@ -14,6 +16,7 @@ import Testimonial from "./Testimonial";
 const HomePage = () => {
   return (
     <div>
+      <Navbar />
       <HeroSection />
       <Discover />
       <NewArrivals />
@@ -26,6 +29,7 @@ const HomePage = () => {
       <OurExperts />
       <Testimonial />
       <AddsModel />
+      <Footer />
     </div>
   );
 };
