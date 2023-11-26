@@ -5,12 +5,14 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaShippingFast } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import Payment from "./Payments/Payment";
 import { clearCart } from "../../../Redux/Slice/CartSlice";
+import Payment from "./Payments/Payment";
 import Navbar from "../../common/Navbar";
 import Footer from "../../common/Footer";
+import useFirebase from "../../../hooks/useFirebase";
 
 const Checkout = () => {
+  const { user } = useFirebase();
   const [countries, setCountries] = useState([]);
   const products = useSelector(state => state.cart);
   const [subTotal, setSubTotal] = useState(0);
@@ -20,13 +22,24 @@ const Checkout = () => {
   const dispatch = useDispatch();
   const { register, handleSubmit, reset } = useForm();
 
+  // Order Date
+  const currentDate = new Date().toLocaleString("en-US", {
+    month: "short", // abbreviated month name
+    day: "numeric",
+    year: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+  });
+
   // Form submit button
   const onSubmit = data => {
     // console.log(data);
+    data.email = user.email;
+    data.date = currentDate;
     data.orders = products;
     data.payment = "pending";
 
-    axios.post("https://dokan-backend.onrender.com/orders", data).then(res => {
+    axios.post("http://localhost:8000/addOrders", data).then(res => {
       reset();
     });
     // here clear all cart items
