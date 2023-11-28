@@ -39,7 +39,7 @@ const Checkout = () => {
     data.orders = products;
     data.payment = "pending";
 
-    axios.post("http://localhost:8000/addOrders", data).then(res => {
+    axios.post("https://dokan-backend.onrender.com/addOrders", data).then(res => {
       reset();
     });
     // here clear all cart items
