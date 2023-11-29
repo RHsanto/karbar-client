@@ -15,13 +15,13 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Failed from "../components/Home/Cart/Payments/Failed";
 import Success from "../components/Home/Cart/Payments/Success";
 import UserDash from "../components/Home/Cart/UserDashboard/UserDash";
-// import DashTemplate from "../components/AdminDashboard/DashTemplate";
-import OrderDetails from "../components/AdminDashboard/OrderDetails";
-import AllOrders from "../components/AdminDashboard/AllOrders";
-import AllProducts from "../components/AdminDashboard/AllProducts";
-import Customer from "../components/AdminDashboard/Customer";
 import PaymentLists from "../components/AdminDashboard/PaymentLists";
 import MainDashboard from "../components/AdminDashboard/MainDashboard";
+import AllOrders from "../components/AdminDashboard/Orders/AllOrders";
+import AllProducts from "../components/AdminDashboard/Product/AllProducts";
+import Customer from "../components/AdminDashboard/Customer/Customer";
+import OrderDetails from "../components/AdminDashboard/Orders/OrderDetails";
+import AddProduct from "../components/AdminDashboard/Product/AddProduct";
 
 const Index = () => {
   return (
@@ -53,6 +53,7 @@ const Index = () => {
         <Route path="/adminDash" element={<MainDashboard />} />
         <Route path="/adminDash/orderList" element={<AllOrders />} />
         <Route path="/adminDash/productList" element={<AllProducts />} />
+        <Route path="/adminDash/addProduct" element={<AddProduct />} />
         <Route path="/adminDash/paymentList" element={<PaymentLists />} />
         <Route path="/adminDash/customer" element={<Customer />} />
         <Route path="/order/:id" element={<OrderDetails />} />

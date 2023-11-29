@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import DashTemplate from "./DashTemplate";
-import DashHeader from "./DashHeader";
-import adminImg from "../../images/pro.png";
+import DashTemplate from "../DashTemplate";
+import DashHeader from "../DashHeader";
+import adminImg from "../../../images/pro.png";
 import { MdOutlineShoppingCart } from "react-icons/md";
 // const fetcher = (...args) => fetch(...args).then(res => res.json());
 

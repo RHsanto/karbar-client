@@ -1,7 +1,7 @@
 /* eslint-disable array-callback-return */
 import React, { useState } from "react";
 import {
-  MdDelete,
+  MdDeleteForever,
   MdDoneAll,
   MdFileCopy,
   MdOutlineFileDownload,
@@ -14,11 +14,11 @@ import {
 } from "react-icons/md";
 import { BiLoaderCircle } from "react-icons/bi";
 import { HiShieldCheck } from "react-icons/hi";
-import adminImg from "../../images/pro.png";
+import adminImg from "../../../images/pro.png";
 import useSWR, { useSWRConfig } from "swr";
 import { Link } from "react-router-dom";
-import DashTemplate from "./DashTemplate";
-import DashHeader from "./DashHeader";
+import DashTemplate from "../DashTemplate";
+import DashHeader from "../DashHeader";
 // useSWR data fetcher
 const fetcher = (...args) => fetch(...args).then(res => res.json());
 
@@ -98,7 +98,7 @@ const AllOrders = () => {
           </div>
           {/* Order History section */}
           <div className="border bg-white">
-            <div className="lg:flex justify-between p-5 items-center ">
+            <div className="lg:flex justify-between p-5 items-center  my-2">
               <div className="mb-5 lg:mb-0">
                 <input
                   onChange={event => {
@@ -218,15 +218,15 @@ const AllOrders = () => {
                             <td>
                               <div className="flex gap-2 text-white">
                                 <Link to={`/order/${data?._id}`}>
-                                  <button className=" bg-blue p-2 rounded flex gap-1 items-center">
-                                    <MdOutlineViewInAr /> View
+                                  <button className="bg-sky-100 text-blue p-2 rounded flex gap-1 items-center">
+                                    <MdOutlineViewInAr className="text-xl" /> View
                                   </button>
                                 </Link>
                                 <button
                                   onClick={() => handleDelete(data?._id)}
-                                  className=" bg-red p-2 rounded flex gap-1 items-center"
+                                  className=" bg-offOrange text-red  p-2 rounded flex gap-1 items-center"
                                 >
-                                  <MdDelete /> Delete
+                                  <MdDeleteForever className="text-xl" /> Delete
                                 </button>
                               </div>
                             </td>

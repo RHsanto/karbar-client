@@ -1,30 +1,45 @@
 /* eslint-disable array-callback-return */
-import React, { useEffect, useState } from "react";
-import DashTemplate from "./DashTemplate";
-import DashHeader from "./DashHeader";
+import React, { useState } from "react";
+import DashTemplate from "../DashTemplate";
+import DashHeader from "../DashHeader";
 import {
-  MdDelete,
+  MdDeleteForever,
   MdFileCopy,
   MdOutlineAdd,
   MdOutlineFileDownload,
   MdOutlineLocalPrintshop,
   MdPictureAsPdf,
 } from "react-icons/md";
-// import { BiLoaderCircle } from "react-icons/bi";
-// import { HiShieldCheck } from "react-icons/hi";
-// import adminImg from "../../images/pro.png";
-// import { useDispatch, useSelector } from "react-redux";
-// import { fetchProductsByType } from "../../Redux/Slice/ProductSlice";
+import useSWR, { useSWRConfig } from "swr";
+import { Link } from "react-router-dom";
 
+const fetcher = (...args) => fetch(...args).then(res => res.json());
 const AllProducts = () => {
-  const [products, setProducts] = useState([]);
+  const { mutate } = useSWRConfig();
   const [searchProduct, setSearchProduct] = useState("");
+  const { data: products } = useSWR(`https://dokan-backend.onrender.com/products`, fetcher);
 
-  useEffect(() => {
-    fetch("https://dokan-backend.onrender.com/products")
-      .then(res => res.json())
-      .then(data => setProducts(data));
-  }, []);
+  //  product delete func
+  const handleDelete = id => {
+    const proceed = window.confirm("Are you sure , you want to delete ?");
+    if (proceed) {
+      const url = `https://dokan-backend.onrender.com/productDelete/${id}`;
+      fetch(url, {
+        method: "DELETE",
+      })
+        .then(res => res.json())
+        .then(data => {
+          mutate("https://dokan-backend.onrender.com/products");
+        });
+    }
+  };
+  // const [products, setProducts] = useState([]);
+
+  // useEffect(() => {
+  //   fetch("https://dokan-backend.onrender.com/products")
+  //     .then(res => res.json())
+  //     .then(data => setProducts(data));
+  // }, []);
   // const { products, loading, error } = useSelector(state => state.product);
 
   // const dispatch = useDispatch();
@@ -50,7 +65,7 @@ const AllProducts = () => {
         </div>
         {/* start product table section */}
         <div className="border bg-white m-10">
-          <div className="lg:flex justify-between p-5 items-center ">
+          <div className="lg:flex justify-between p-5 items-center my-2">
             <div className="mb-5 lg:mb-0">
               <input
                 onChange={event => {
@@ -99,12 +114,11 @@ const AllProducts = () => {
                 </ul>
               </div>
               {/* add product btn */}
-              <>
-                <button className=" btn btn-info text-white ">
-                  {" "}
+              <button className=" btn btn-info text-white ">
+                <Link to="/adminDash/addProduct" className="flex items-center gap-2">
                   <MdOutlineAdd className="text-xl" /> Add Product
-                </button>
-              </>
+                </Link>
+              </button>
             </div>
           </div>
           {/* product table*/}
@@ -115,6 +129,7 @@ const AllProducts = () => {
                 <thead className="text-[16px] uppercase">
                   <tr className="bg-slate-300 text-black ">
                     <th>No</th>
+                    <th>B-code</th>
                     <th>Product</th>
                     <th>Category</th>
                     <th>Stock</th>
@@ -145,6 +160,9 @@ const AllProducts = () => {
                       .map((data, index) => (
                         <tr key={data?._id}>
                           <th>{index + 1}</th>
+                          <th>
+                            <span className="text-blue">{data?._id.slice(3, 9)}</span>
+                          </th>
                           <td>
                             <div className="flex items-center space-x-3">
                               <div>
@@ -166,10 +184,12 @@ const AllProducts = () => {
                           <td>21</td>
                           <td>
                             <button
+                              disabled
                               // onClick={() => handleDelete(data?._id)}
-                              className=" bg-red p-2 rounded flex gap-1 items-center text-white"
+                              className=" bg-offOrange text-red p-2 rounded flex gap-1 items-center "
                             >
-                              <MdDelete /> Delete
+                              <MdDeleteForever className="text-xl" />
+                              Delete
                             </button>
                           </td>
                         </tr>
