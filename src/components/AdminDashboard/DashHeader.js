@@ -14,7 +14,7 @@ const DashHeader = () => {
       <div className=" m-10 py-3 px-10 rounded flex justify-between  bg-white">
         <>
           <Link to="/" className="flex items-center gap-2">
-            <FcHome className="text-2xl" /> <span className="text-[16px]">Home</span>
+            <FcHome className="text-2xl" /> <span className="text-[20px]">Home</span>
           </Link>
         </>
         <div>

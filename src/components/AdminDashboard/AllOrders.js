@@ -23,8 +23,6 @@ import DashHeader from "./DashHeader";
 const fetcher = (...args) => fetch(...args).then(res => res.json());
 
 const AllOrders = () => {
-  // const [orderList, setOrderList] = useState([]) singleOrder ;
-
   const [searchOrder, setSearchOrder] = useState("");
   const { mutate } = useSWRConfig();
 
@@ -56,7 +54,9 @@ const AllOrders = () => {
         </div>
         {/* Order list  */}
         <div className="m-10">
-          <h3>Order List</h3>
+          <h3>
+            <span className="text-gray-400">Order /</span> Order List
+          </h3>
           {/* order record */}
           <div className="lg:grid grid-cols-4 gap-4 border bg-white rounded-lg my-10">
             <div className="flex justify-between p-10 border-r ">
@@ -154,7 +154,7 @@ const AllOrders = () => {
                 <table className="table border">
                   {/* head */}
                   <thead className="text-[16px] uppercase">
-                    <tr className="bg-sky-400 text-white">
+                    <tr className="bg-slate-300 text-black">
                       <th>No</th>
                       <th>O-Code</th>
                       <th>Date</th>

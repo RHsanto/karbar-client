@@ -58,7 +58,10 @@ const OrderDetails = () => {
           <DashHeader />
         </div>
         <div className="m-12 bg-white  p-10">
-          <h3>Order Details</h3>
+          <h3>
+            {" "}
+            <span className="text-gray-400">Order /</span> Order Details
+          </h3>
           <div className="my-5 flex justify-between">
             <div>
               <div>
@@ -84,7 +87,7 @@ const OrderDetails = () => {
                   <table className="table text-[15px]">
                     {/* head */}
                     <thead className="text-[15px] uppercase ">
-                      <tr className="bg-blue text-white">
+                      <tr className="bg-slate-300 text-black">
                         <th>No</th>
                         <th>Products</th>
                         <th>Price</th>
