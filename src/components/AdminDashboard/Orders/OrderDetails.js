@@ -27,7 +27,7 @@ const OrderDetails = () => {
   const calculateTotal = () => {
     const subtotal = calculateSubtotal();
     const shipping = 56;
-    const tax = 30;
+    const tax = 0.1 * subtotal;
     return subtotal + shipping + tax;
   };
   //  orders delete functionality
@@ -134,7 +134,7 @@ const OrderDetails = () => {
                     Shipping : <b>$56</b>
                   </div>
                   <div className="flex justify-between">
-                    Tax : <b>$30</b>
+                    Tax : <b>${0.15 * calculateSubtotal()?.toFixed(2)}</b>
                   </div>
                   <div className="flex justify-between">
                     Total : <b> ${calculateTotal()?.toFixed(2)}</b>{" "}
