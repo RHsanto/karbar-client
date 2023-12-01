@@ -150,7 +150,7 @@ const Checkout = () => {
                       >
                         <option value="">Select a country</option>
                         {countries.map(country => (
-                          <option key={country.cca2} value={country.cca2}>
+                          <option key={country.cca3} value={country.cca3}>
                             {country.name.common}
                           </option>
                         ))}

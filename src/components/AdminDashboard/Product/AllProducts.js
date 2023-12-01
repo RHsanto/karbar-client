@@ -10,45 +10,29 @@ import {
   MdOutlineLocalPrintshop,
   MdPictureAsPdf,
 } from "react-icons/md";
-import useSWR, { useSWRConfig } from "swr";
+import useSWR from "swr";
 import { Link } from "react-router-dom";
 
 const fetcher = (...args) => fetch(...args).then(res => res.json());
 const AllProducts = () => {
-  const { mutate } = useSWRConfig();
+  // const { mutate } = useSWRConfig();
   const [searchProduct, setSearchProduct] = useState("");
   const { data: products } = useSWR(`https://dokan-backend.onrender.com/products`, fetcher);
 
   //  product delete func
-  const handleDelete = id => {
-    const proceed = window.confirm("Are you sure , you want to delete ?");
-    if (proceed) {
-      const url = `https://dokan-backend.onrender.com/productDelete/${id}`;
-      fetch(url, {
-        method: "DELETE",
-      })
-        .then(res => res.json())
-        .then(data => {
-          mutate("https://dokan-backend.onrender.com/products");
-        });
-    }
-  };
-  // const [products, setProducts] = useState([]);
-
-  // useEffect(() => {
-  //   fetch("https://dokan-backend.onrender.com/products")
-  //     .then(res => res.json())
-  //     .then(data => setProducts(data));
-  // }, []);
-  // const { products, loading, error } = useSelector(state => state.product);
-
-  // const dispatch = useDispatch();
-  // const type = "kids";
-
-  // useEffect(() => {
-  //   dispatch(fetchProductsByType());
-  // }, [dispatch]);
-  // console.log(products);
+  // const handleDelete = id => {
+  //   const proceed = window.confirm("Are you sure , you want to delete ?");
+  //   if (proceed) {
+  //     const url = `https://dokan-backend.onrender.com/productDelete/${id}`;
+  //     fetch(url, {
+  //       method: "DELETE",
+  //     })
+  //       .then(res => res.json())
+  //       .then(data => {
+  //         mutate("https://dokan-backend.onrender.com/products");
+  //       });
+  //   }
+  // };
 
   return (
     <div className="lg:grid grid-cols-6">
@@ -184,7 +168,6 @@ const AllProducts = () => {
                           <td>21</td>
                           <td>
                             <button
-                              disabled
                               // onClick={() => handleDelete(data?._id)}
                               className=" bg-offOrange text-red p-2 rounded flex gap-1 items-center "
                             >

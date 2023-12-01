@@ -19,17 +19,12 @@ const OrderDetails = () => {
   // here get orders items
   const data = order?.orders;
 
-  // Calculate subtotal and total
-  const calculateSubtotal = () => {
-    return data?.reduce((acc, item) => acc + item.price * item.quantity, 0);
-  };
+  // // Calculate subtotal and total
+  const subTotal = data?.reduce((order, item) => order + item.price * item.quantity, 0);
+  const shipping = 56;
+  const tax = 0.1 * subTotal;
+  const total = subTotal + shipping + tax;
 
-  const calculateTotal = () => {
-    const subtotal = calculateSubtotal();
-    const shipping = 56;
-    const tax = 0.1 * subtotal;
-    return subtotal + shipping + tax;
-  };
   //  orders delete functionality
   // const handleDelete = id => {
   //   const proceed = window.confirm("Are you sure , you want to delete ?");
@@ -128,16 +123,16 @@ const OrderDetails = () => {
                 {/* sub total  */}
                 <div className="border-t grid justify-end   px-16 py-5">
                   <div className="flex justify-between gap-6">
-                    <span> SubTotal :</span> <b>${calculateSubtotal()?.toFixed(2)}</b>
+                    <span> SubTotal :</span> <b>${subTotal?.toFixed(2)}</b>
                   </div>
                   <div className="flex justify-between">
-                    Shipping : <b>$56</b>
+                    Shipping : <b>${shipping}</b>
                   </div>
                   <div className="flex justify-between">
-                    Tax : <b>${0.15 * calculateSubtotal()?.toFixed(2)}</b>
+                    Tax : <b>${tax?.toFixed(2)}</b>
                   </div>
                   <div className="flex justify-between">
-                    Total : <b> ${calculateTotal()?.toFixed(2)}</b>{" "}
+                    Total : <b> ${total?.toFixed(2)}</b>{" "}
                   </div>
                 </div>
               </div>
@@ -168,7 +163,7 @@ const OrderDetails = () => {
                       <span className=" font-bold">Contact info</span>
                       <div className="mt-2">
                         <div>Email : {order?.email}</div>
-                        <div>Mobile :(+880) {order?.phone}</div>
+                        <div>Mobile : {order?.phone}</div>
                       </div>
                     </div>
                   </div>
