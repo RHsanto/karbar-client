@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import Footer from "../common/Footer";
 import HeroSection from "../common/HeroSection";
 import Navbar from "../common/Navbar";
@@ -19,12 +20,12 @@ const HomePage = () => {
       <Navbar />
       <HeroSection />
       <Discover />
-      <NewArrivals />
+      <AllItems />
+      {/* <Money /> */}
       <AllStep />
-      <Money />
+      <NewArrivals />
       <Explore />
       <SpecialOffer />
-      <AllItems />
       <Department />
       <OurExperts />
       <Testimonial />

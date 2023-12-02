@@ -136,7 +136,7 @@ const Customer = () => {
                             0
                           );
                           // include shipping and tax amount
-                          const taxAmount = 0.15 * totalSpent;
+                          const taxAmount = 0.1 * totalSpent;
                           const shipping = 56;
                           const allSpent = totalSpent + shipping + taxAmount;
 

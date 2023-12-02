@@ -24,24 +24,25 @@ const fetcher = (...args) => fetch(...args).then(res => res.json());
 
 const AllOrders = () => {
   const [searchOrder, setSearchOrder] = useState("");
+  // eslint-disable-next-line no-unused-vars
   const { mutate } = useSWRConfig();
 
   const { data: orderList } = useSWR(`https://dokan-backend.onrender.com/orders`, fetcher);
 
   //  orders delete functionality
-  const handleDelete = id => {
-    const proceed = window.confirm("Are you sure , you want to delete ?");
-    if (proceed) {
-      const url = `https://dokan-backend.onrender.com/orderDelete/${id}`;
-      fetch(url, {
-        method: "DELETE",
-      })
-        .then(res => res.json())
-        .then(data => {
-          mutate("https://dokan-backend.onrender.com/orders");
-        });
-    }
-  };
+  // const handleDelete = id => {
+  //   const proceed = window.confirm("Are you sure , you want to delete ?");
+  //   if (proceed) {
+  //     const url = `https://dokan-backend.onrender.com/orderDelete/${id}`;
+  //     fetch(url, {
+  //       method: "DELETE",
+  //     })
+  //       .then(res => res.json())
+  //       .then(data => {
+  //         mutate("https://dokan-backend.onrender.com/orders");
+  //       });
+  //   }
+  // };
 
   return (
     <div className="lg:grid grid-cols-6 ">
@@ -223,7 +224,7 @@ const AllOrders = () => {
                                   </button>
                                 </Link>
                                 <button
-                                  onClick={() => handleDelete(data?._id)}
+                                  // onClick={() => handleDelete(data?._id)}
                                   className=" bg-offOrange text-red  p-2 rounded flex gap-1 items-center"
                                 >
                                   <MdDeleteForever className="text-xl" /> Delete

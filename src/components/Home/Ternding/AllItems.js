@@ -8,7 +8,7 @@ const AllItems = () => {
       <div className="border-b-2 p-10 lg:p-0">
         <h3>What's trending now</h3>
         <h6 className="text-[18px] my-5 text[#6B7280]">
-          Discover the most trending products in Dokan.
+          Discover the most trending products in Karbar.
         </h6>
       </div>
 

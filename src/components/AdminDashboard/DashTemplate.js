@@ -30,12 +30,12 @@ const DashTemplate = () => {
             <span className="text-[16px]"> Order List</span>
           </li>
         </Link>
-        <Link to="/adminDash/paymentList" className="flex items-center gap-2">
+        {/* <Link to="/adminDash/paymentList" className="flex items-center gap-2">
           <li className="w-full mb-3">
             <BiLogoPaypal className="text-2xl" />
             <span className="text-[16px]"> Payment</span>
           </li>
-        </Link>
+        </Link> */}
         <Link to="/adminDash/productList" className="flex items-center gap-2">
           <li className="w-full mb-3">
             <BiLayer className="text-2xl" /> <span className="text-[16px]">Products</span>
