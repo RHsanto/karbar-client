@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "../components/Home/HomePage";
@@ -11,7 +12,7 @@ import Contact from "../components/Home/Contact";
 import Checkout from "../components/Home/Cart/Checkout";
 import Login from "../components/Home/Authentication/Login";
 import SignUp from "../components/Home/Authentication/SignUp";
-import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import PrivateRoute from "../ProtectRoute/PrivateRoute";
 import Failed from "../components/Home/Cart/Payments/Failed";
 import Success from "../components/Home/Cart/Payments/Success";
 import UserDash from "../components/Home/Cart/UserDashboard/UserDash";
@@ -22,6 +23,7 @@ import AllProducts from "../components/AdminDashboard/Product/AllProducts";
 import Customer from "../components/AdminDashboard/Customer/Customer";
 import OrderDetails from "../components/AdminDashboard/Orders/OrderDetails";
 import AddProduct from "../components/AdminDashboard/Product/AddProduct";
+import AdminRoute from "../ProtectRoute/AdminRoute";
 
 const Index = () => {
   return (
@@ -50,13 +52,57 @@ const Index = () => {
         <Route path="/checkout-cancel" element={<Failed />} />
         <Route path="/checkout-success" element={<Success />} />
         <Route path="/userDash" element={<UserDash />} />
-        <Route path="/adminDash" element={<MainDashboard />} />
-        <Route path="/adminDash/orderList" element={<AllOrders />} />
-        <Route path="/adminDash/productList" element={<AllProducts />} />
-        <Route path="/adminDash/addProduct" element={<AddProduct />} />
-        <Route path="/adminDash/paymentList" element={<PaymentLists />} />
-        <Route path="/adminDash/customer" element={<Customer />} />
-        <Route path="/order/:id" element={<OrderDetails />} />
+
+        <Route
+          path="/adminDash"
+          element={
+            <AdminRoute>
+              <MainDashboard />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/adminDash/orderList"
+          element={
+            <AdminRoute>
+              <AllOrders />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/adminDash/productList"
+          element={
+            <AdminRoute>
+              <AllProducts />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/adminDash/addProduct"
+          element={
+            <AdminRoute>
+              <AddProduct />
+            </AdminRoute>
+          }
+        />
+        {/* <Route path="/adminDash/paymentList" element={
+        <PaymentLists />} /> */}
+        <Route
+          path="/adminDash/customer"
+          element={
+            <AdminRoute>
+              <Customer />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/order/:id"
+          element={
+            <AdminRoute>
+              <OrderDetails />
+            </AdminRoute>
+          }
+        />
       </Routes>
       {/* <Footer /> */}
     </BrowserRouter>
