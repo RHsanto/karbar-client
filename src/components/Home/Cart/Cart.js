@@ -113,15 +113,15 @@ const Cart = () => {
               </div>
               <div className="flex justify-between py-4 border-b ">
                 <span className="text-slate-500">Shipping estimate</span>
-                <h5>${shipping}</h5>
+                <h5>${subTotal === 0 ? "00" : shipping}</h5>
               </div>
               <div className="flex justify-between py-4 border-b ">
                 <span className="text-slate-500">Tax estimate</span>
-                <h5>${tax}</h5>
+                <h5>${subTotal === 0 ? "00" : tax}</h5>
               </div>
               <div className="flex justify-between py-4  ">
                 <span className="text-[20px] font-bold">Order total</span>
-                <h5>${total.toFixed(2)}</h5>
+                <h5>${subTotal === 0 ? "00" : total.toFixed(2)}</h5>
               </div>
               <div className="w-80 my-10">
                 <Link to="/checkout">

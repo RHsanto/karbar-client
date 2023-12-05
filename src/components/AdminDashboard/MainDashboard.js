@@ -43,7 +43,7 @@ const MainDashboard = () => {
             <div className="p-6 bg-blue rounded flex justify-between">
               <div>
                 <h4>Total Sales</h4>
-                <h3 className="mt-2">{totalSale}</h3>
+                <h4 className="mt-2">{totalSale}</h4>
               </div>
               <div>
                 {" "}
@@ -55,7 +55,7 @@ const MainDashboard = () => {
             <div className="p-5 bg-red rounded flex justify-between">
               <div>
                 <h4> Customers</h4>
-                <h3 className="mt-2">{orderList?.length}</h3>
+                <h4 className="mt-2">{orderList?.length}</h4>
               </div>
               <div>
                 <h2>
@@ -68,7 +68,7 @@ const MainDashboard = () => {
               <div>
                 {" "}
                 <h4>Products</h4>
-                <h3 className="mt-2">{products?.length}</h3>
+                <h4 className="mt-2">{products?.length}</h4>
               </div>
               <div>
                 <h2>
@@ -80,7 +80,7 @@ const MainDashboard = () => {
               <div>
                 {" "}
                 <h4>Total Income</h4>
-                <h3 className="mt-2">${totalIncome.toFixed(2)}</h3>
+                <h4 className="mt-2">${totalIncome.toFixed(2)}</h4>
               </div>
               <div>
                 <h2>

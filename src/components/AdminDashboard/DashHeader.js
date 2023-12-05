@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { BiLogOutCircle } from "react-icons/bi";
 import { FaUserCheck } from "react-icons/fa";
@@ -6,7 +7,7 @@ import adminImg from "../../images/pro.png";
 import useFirebase from "../../hooks/useFirebase";
 import { FcHome } from "react-icons/fc";
 const DashHeader = () => {
-  const { user, logOut } = useFirebase();
+  const { user } = useFirebase();
 
   return (
     <div>
@@ -17,7 +18,22 @@ const DashHeader = () => {
             <FcHome className="text-2xl" /> <span className="text-[20px]">Home</span>
           </Link>
         </>
-        <div>
+
+        <div className="lg:flex gap-3">
+          <div>
+            {" "}
+            <div className="avatar online">
+              <div className="w-12 rounded-full">
+                <img src={adminImg} alt="img" />
+              </div>
+            </div>
+          </div>
+          <div className="lg:block hidden">
+            <h5>{user?.displayName}</h5>
+            <p>Admin</p>
+          </div>
+        </div>
+        {/* <div>
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="cursor-pointer">
               <div className="avatar online">
@@ -28,7 +44,8 @@ const DashHeader = () => {
             </label>
             <ul
               tabIndex={0}
-              className="mt-2 dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-72 gap-2"
+              className="mt-2 dropdown-content
+               z-[1] menu p-2  bg-base-100 rounded-box w-72 gap-2"
             >
               <li>
                 <div className="border-b-2">
@@ -46,12 +63,6 @@ const DashHeader = () => {
                   </div>
                 </div>
               </li>
-              <li>
-                <Link to="/#">
-                  {" "}
-                  <FaUserCheck className="text-2xl text-black" /> My Profile
-                </Link>
-              </li>
               <div>
                 <div>
                   <button onClick={logOut} className="btn bg-red w-full text-white">
@@ -61,7 +72,7 @@ const DashHeader = () => {
               </div>
             </ul>
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

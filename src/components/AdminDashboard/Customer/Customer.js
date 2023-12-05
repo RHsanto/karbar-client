@@ -106,7 +106,7 @@ const Customer = () => {
                       <th>Customer id</th>
                       <th>Customer</th>
                       <th>Country</th>
-                      <th>Order</th>
+                      <th>Orders</th>
                       <th>Total spent</th>
                     </tr>
                   </thead>
