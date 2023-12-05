@@ -24,7 +24,7 @@ import Customer from "../components/AdminDashboard/Customer/Customer";
 import OrderDetails from "../components/AdminDashboard/Orders/OrderDetails";
 import AddProduct from "../components/AdminDashboard/Product/AddProduct";
 import AdminRoute from "../ProtectRoute/AdminRoute";
-
+import ProtectMsg from "../ProtectRoute/ProtectMsg";
 const Index = () => {
   return (
     <BrowserRouter>
@@ -52,6 +52,7 @@ const Index = () => {
         <Route path="/checkout-cancel" element={<Failed />} />
         <Route path="/checkout-success" element={<Success />} />
         <Route path="/userDash" element={<UserDash />} />
+        <Route path="/protectMsg" element={<ProtectMsg />} />
 
         <Route
           path="/adminDash"
