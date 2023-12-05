@@ -52,7 +52,7 @@ const Index = () => {
         <Route path="/checkout-cancel" element={<Failed />} />
         <Route path="/checkout-success" element={<Success />} />
         <Route path="/userDash" element={<UserDash />} />
-        <Route path="/protectMsg" element={<ProtectMsg />} />
+        <Route path="/security-alert" element={<ProtectMsg />} />
 
         <Route
           path="/adminDash"

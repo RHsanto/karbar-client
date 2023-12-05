@@ -1,10 +1,15 @@
 /* eslint-disable array-callback-return */
-import { BiLogOutCircle, BiUser } from "react-icons/bi";
-import { FaUserAlt } from "react-icons/fa";
-import { LuClipboardList } from "react-icons/lu";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { BsCart4 } from "react-icons/bs";
+import {
+  BsBoxArrowLeft,
+  BsCart4,
+  BsClipboard2DataFill,
+  BsHouseFill,
+  BsPerson,
+  BsPersonCircle,
+} from "react-icons/bs";
 import { TfiMenu } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import { removeFromCart } from "../../Redux/Slice/CartSlice";
@@ -13,7 +18,8 @@ import logo from "../../images/logo.PNG";
 const Navbar = () => {
   const { user, logOut } = useFirebase();
   // console.log(user);
-
+  //  admin check
+  const isAdmin = user?.email === "santodon176@gmail.com";
   const [activeItem, setActiveItem] = useState("");
   const firstName = user?.displayName?.split(" ")[0];
   const items = useSelector(state => state.cart);
@@ -220,7 +226,7 @@ const Navbar = () => {
                   <div className="dropdown">
                     <label tabIndex={0} className=" m-1">
                       <div className=" flex items-center gap-2 border-2 border-black p-2 rounded-lg cursor-pointer">
-                        <BiUser className="text-2xl" />
+                        <BsPerson className="text-2xl" />
                         {firstName}
                       </div>
                     </label>
@@ -228,19 +234,32 @@ const Navbar = () => {
                       tabIndex={0}
                       className=" dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 border"
                     >
+                      {isAdmin ? (
+                        <>
+                          <Link to="/adminDash">
+                            <button className="p-3 rounded-lg mb-2 text-center hover:bg-slate-200 w-full flex font-bold items-center  gap-3">
+                              <BsHouseFill className="text-[20px]" /> Dashboard
+                            </button>
+                          </Link>
+                        </>
+                      ) : (
+                        ""
+                      )}
+
                       <Link to="/userDash">
                         <button className="p-3 rounded-lg mb-2 text-center hover:bg-slate-200 w-full flex font-bold items-center  gap-3">
-                          <FaUserAlt className="text-[20px]" /> My Account
+                          <BsPersonCircle className="text-[20px]" /> My Account
                         </button>
                       </Link>
                       <Link onClick={() => handleMenuItemClick("cart")} to="/cart">
                         <button className="p-3 rounded-lg mb-2 text-center hover:bg-slate-200 w-full flex font-bold items-center  gap-3">
-                          <LuClipboardList className="text-2xl" /> My Orders
+                          <BsClipboard2DataFill className="text-2xl" /> My Orders
                         </button>
                       </Link>
+
                       <div>
                         <button onClick={logOut} className="btn bg-red w-full text-white">
-                          <BiLogOutCircle className="text-2xl" /> Sign out
+                          <BsBoxArrowLeft className="text-2xl" /> Sign out
                         </button>
                       </div>
                     </div>
@@ -315,7 +334,7 @@ const Navbar = () => {
                 <div className="dropdown">
                   <label tabIndex={0} className="m-1">
                     <div className="flex items-center gap-2 border-2 border-black p-2 rounded-lg cursor-pointer">
-                      <BiUser className="text-2xl" />
+                      <BsPerson className="text-2xl" />
                       {firstName}
                     </div>
                   </label>

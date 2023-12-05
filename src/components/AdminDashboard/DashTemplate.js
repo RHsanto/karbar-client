@@ -1,6 +1,7 @@
 import React from "react";
 
 import logo from "../../images/logo.PNG";
+// eslint-disable-next-line no-unused-vars
 import { BiHomeSmile, BiLayer, BiLogoPaypal } from "react-icons/bi";
 import { LuClipboardList } from "react-icons/lu";
 import { FaUsers } from "react-icons/fa";

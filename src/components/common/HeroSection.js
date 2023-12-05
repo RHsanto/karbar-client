@@ -6,11 +6,11 @@ const HeroSection = () => {
   return (
     <div
       className="container mx-auto lg:px-32  bg-[#FEE2E2]
-     rounded-lg mb-20"
+     rounded-lg mb-20 lg:mb-10"
     >
-      <div className="lg:grid grid-cols-2 items-center gap-10 lg:p-0 p-10 my-10">
+      <div className="mt-5 lg:h-[600px] lg:grid grid-cols-2 items-center gap-10 lg:p-0 p-10 ">
         <div>
-          <h5>In this season, find the best 🔥</h5>
+          <h4>In this season, find the best 🔥</h4>
           <h1 className="my-10 lg:leading-[75px]">
             Exclusive collection <br />
             for everyone
