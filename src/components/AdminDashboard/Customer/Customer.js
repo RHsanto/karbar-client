@@ -29,7 +29,7 @@ const Customer = () => {
       setCountryFlags(flagsMap);
     });
   }, []);
-  console.log(countryFlags);
+  // console.log(countryFlags);
   return (
     <div className="lg:grid grid-cols-6">
       <div className="cols-span-1 m-5">

@@ -2,7 +2,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { SlMinus } from "react-icons/sl";
 import { BsPlusCircle } from "react-icons/bs";
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
   decrementQuantity,
@@ -16,30 +15,16 @@ const Cart = () => {
   const dispatch = useDispatch();
   const products = useSelector(state => state.cart);
 
+  // calculate total amount
+  const subTotal = products?.reduce((order, item) => order + item.price * item.quantity, 0);
+  const taxAmount = 0.1 * subTotal;
+  const shipping = 56;
+  const total = subTotal + shipping + taxAmount;
+
+  // Remove cart
   const handleRemove = productId => {
     dispatch(removeFromCart(productId));
   };
-
-  const [subTotal, setSubTotal] = useState(0);
-  const [total, setTotal] = useState(0);
-
-  const shipping = 30;
-  const tax = 56;
-
-  useEffect(() => {
-    // Calculate subtotal and total whenever the cart changes
-    let calculatedSubTotal = 0;
-    products.map(product => {
-      calculatedSubTotal += product.price * product.quantity;
-    });
-
-    // In this example, we'll assume shipping and tax amounts
-    const calculatedTotal = calculatedSubTotal + shipping + tax;
-
-    setSubTotal(calculatedSubTotal);
-    setTotal(calculatedTotal);
-  }, [products]);
-
   // increment & decrement
   const handleIncrement = productId => {
     dispatch(incrementQuantity(productId));
@@ -117,7 +102,7 @@ const Cart = () => {
               </div>
               <div className="flex justify-between py-4 border-b ">
                 <span className="text-slate-500">Tax estimate</span>
-                <h5>${subTotal === 0 ? "00" : tax}</h5>
+                <h5>${subTotal === 0 ? "00" : taxAmount}</h5>
               </div>
               <div className="flex justify-between py-4  ">
                 <span className="text-[20px] font-bold">Order total</span>

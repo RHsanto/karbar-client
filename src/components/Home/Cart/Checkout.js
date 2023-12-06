@@ -15,10 +15,6 @@ const Checkout = () => {
   const { user } = useFirebase();
   const [countries, setCountries] = useState([]);
   const products = useSelector(state => state.cart);
-  const [subTotal, setSubTotal] = useState(0);
-  const [total, setTotal] = useState(0);
-  const shipping = 30;
-  const tax = 56;
   const dispatch = useDispatch();
   const { register, handleSubmit, reset } = useForm();
 
@@ -57,22 +53,11 @@ const Checkout = () => {
       .catch(error => console.error("Error fetching countries:", error));
   }, []);
 
-  // order calculation
-  useEffect(() => {
-    // Calculate subtotal and total whenever the cart changes
-    let calculatedSubTotal = 0;
-    products.map(product => {
-      calculatedSubTotal += product.price * product.quantity;
-    });
-
-    // In this example, we'll assume shipping and tax amounts
-    const calculatedTotal = calculatedSubTotal + shipping + tax;
-
-    setSubTotal(calculatedSubTotal);
-    setTotal(calculatedTotal);
-  }, [products]);
-
-  // console.log("products", products);
+  // calculate total amount
+  const subTotal = products?.reduce((order, item) => order + item.price * item.quantity, 0);
+  const taxAmount = 0.1 * subTotal;
+  const shipping = 56;
+  const total = subTotal + shipping + taxAmount;
 
   return (
     <>
@@ -196,7 +181,7 @@ const Checkout = () => {
             </div>
             <div className="flex justify-between py-4 border-b ">
               <span className="text-slate-500">Tax estimate</span>
-              <h5>${subTotal === 0 ? "0" : <>{tax}</>}</h5>
+              <h5>${subTotal === 0 ? "0" : <>{taxAmount}</>}</h5>
             </div>
             <div className="flex justify-between py-4  ">
               <span className="text-[20px] font-bold">Order total</span>

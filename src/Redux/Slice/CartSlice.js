@@ -29,7 +29,7 @@ const cartSlice = createSlice({
       localStorage.setItem("cart", JSON.stringify(updatedCart));
       return updatedCart;
     },
-    clearCart: state => {
+    clearCart: () => {
       // Clear the cart by setting it to an empty array
       const updatedCart = [];
       localStorage.setItem("cart", JSON.stringify(updatedCart));
