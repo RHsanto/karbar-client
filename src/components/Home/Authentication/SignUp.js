@@ -18,9 +18,9 @@ const SignUp = () => {
   // google authentication
   const handleGoogle = e => {
     signInUsingGoogle().then(result => {
-      const user = result.user;
+      const user = result?.user;
       GoogleUser(user.email, user.displayName);
-      console.log(user);
+      // console.log(user);
 
       navigate(redirect_uri);
     });

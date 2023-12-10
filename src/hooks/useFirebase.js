@@ -112,14 +112,23 @@ const useFirebase = () => {
   //save user info to database
   const emailUser = (email, displayName) => {
     const user = { email, displayName, role: "user" };
-    axios.post("https://dokan-backend.onrender.com/users", user).then();
+    axios
+      .post("http://localhost:8000/add-users", user)
+      .then()
+      .catch(error => {
+        setError(error.message);
+      });
   };
 
   // save google user info to database
-
   const GoogleUser = (email, displayName) => {
     const user = { email, displayName, role: "user" };
-    axios.post("https://dokan-backend.onrender.com/users", user).then();
+    axios
+      .post("http://localhost:8000/add-users", user)
+      .then()
+      .catch(error => {
+        setError(error.message);
+      });
   };
 
   return {

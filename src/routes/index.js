@@ -25,6 +25,7 @@ import OrderDetails from "../components/AdminDashboard/Orders/OrderDetails";
 import AddProduct from "../components/AdminDashboard/Product/AddProduct";
 import AdminRoute from "../ProtectRoute/AdminRoute";
 import ProtectMsg from "../ProtectRoute/ProtectMsg";
+import UserProfile from "../components/Home/Cart/UserDashboard/UserProfile";
 const Index = () => {
   return (
     <BrowserRouter>
@@ -51,7 +52,7 @@ const Index = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/checkout-cancel" element={<Failed />} />
         <Route path="/checkout-success" element={<Success />} />
-        <Route path="/userDash" element={<UserDash />} />
+        <Route path="/user-profile" element={<UserProfile />} />
         <Route path="/security-alert" element={<ProtectMsg />} />
 
         <Route

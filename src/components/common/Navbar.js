@@ -246,7 +246,7 @@ const Navbar = () => {
                         ""
                       )}
 
-                      <Link to="/userDash">
+                      <Link to="/user-profile">
                         <button className="p-3 rounded-lg mb-2 text-center hover:bg-slate-200 w-full flex font-bold items-center  gap-3">
                           <BsPersonCircle className="text-[20px]" /> My Account
                         </button>
