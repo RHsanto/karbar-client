@@ -12,12 +12,12 @@ const fetcher = (...args) => fetch(...args).then(res => res.json());
 const EditProfile = () => {
   const { user } = useFirebase();
   const { mutate } = useSWRConfig();
-  const [countries, setCountries] = useState([]);
   const { register, handleSubmit, reset } = useForm();
+  const [countries, setCountries] = useState([]);
   const [imageURL, setImageURL] = useState("");
 
   const { data } = useSWR(`http://localhost:8000/user/${user.email}`, fetcher);
-  console.log(data?.imageLink);
+  // console.log(data?.imageLink);
 
   // Img upload functionality
   const handleImageUpload = async e => {
