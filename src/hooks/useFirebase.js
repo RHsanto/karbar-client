@@ -113,7 +113,7 @@ const useFirebase = () => {
   const emailUser = (email, displayName) => {
     const user = { email, displayName, role: "user" };
     axios
-      .post("http://localhost:8000/add-users", user)
+      .post("https://dokan-backend.onrender.com/add-users", user)
       .then()
       .catch(error => {
         setError(error.message);
@@ -124,7 +124,7 @@ const useFirebase = () => {
   const GoogleUser = (email, displayName) => {
     const user = { email, displayName, role: "user" };
     axios
-      .post("http://localhost:8000/add-users", user)
+      .post("https://dokan-backend.onrender.com/add-users", user)
       .then()
       .catch(error => {
         setError(error.message);

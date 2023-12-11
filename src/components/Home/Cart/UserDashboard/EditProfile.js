@@ -16,7 +16,7 @@ const EditProfile = () => {
   const [countries, setCountries] = useState([]);
   const [imageURL, setImageURL] = useState("");
 
-  const { data } = useSWR(`http://localhost:8000/user/${user.email}`, fetcher);
+  const { data } = useSWR(`https://dokan-backend.onrender.com/user/${user.email}`, fetcher);
   // console.log(data?.imageLink);
 
   // Img upload functionality
@@ -40,16 +40,15 @@ const EditProfile = () => {
   // State to store the uploaded
   const onSubmit = data => {
     data.imageLink = imageURL;
-
     // console.log(data);
 
     axios
-      .post(`http://localhost:8000/edit-user/${user.email}`, data)
+      .post(`https://dokan-backend.onrender.com/edit-user/${user.email}`, data)
       .then(() => {
         // here use useSWR methods
         reset();
         setImageURL("");
-        mutate(`http://localhost:8000/user/${user.email}`);
+        mutate(`https://dokan-backend.onrender.com/user/${user.email}`);
       })
       .catch(err => {
         console.log(err);
@@ -170,7 +169,7 @@ const EditProfile = () => {
                 >
                   <option value="">Select a country</option>
                   {countries.map(country => (
-                    <option key={country.cca2} value={country.cca2}>
+                    <option key={country.cca2} value={country.name.common}>
                       {country.name.common}
                     </option>
                   ))}

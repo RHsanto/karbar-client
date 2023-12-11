@@ -52,7 +52,14 @@ const Index = () => {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/checkout-cancel" element={<Failed />} />
         <Route path="/checkout-success" element={<Success />} />
-        <Route path="/user-profile" element={<UserProfile />} />
+        <Route
+          path="/user-profile"
+          element={
+            <PrivateRoute>
+              <UserProfile />
+            </PrivateRoute>
+          }
+        />
         <Route path="/security-alert" element={<ProtectMsg />} />
 
         <Route
