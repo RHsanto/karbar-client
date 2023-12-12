@@ -8,7 +8,7 @@ import { AiFillHeart, AiOutlineHeart, AiFillStar } from "react-icons/ai";
 
 const FourBox = () => {
   const [love, setLove] = useState(1);
-  const [catColor, setCatColor] = useState("green");
+  const [categoryColor, setCategoryColor] = useState("green");
   const handleLove = () => {
     setLove(1);
   };
@@ -17,30 +17,23 @@ const FourBox = () => {
   };
 
   // category color selector
-  const yellowBtn = () => {
-    setCatColor("yellow");
+
+  const commonBtn = item => {
+    setCategoryColor(item);
   };
-  const blueBtn = () => {
-    setCatColor("blue");
-  };
-  const redBtn = () => {
-    setCatColor("red");
-  };
-  const greenBtn = () => {
-    setCatColor("green");
-  };
-  const blackBtn = () => {
-    setCatColor("black");
+
+  const productImages = {
+    yellow: img,
+    blue: img2,
+    red: img3,
+    green: img4,
+    black: img5,
   };
 
   return (
     <div>
       <div className="bg-bgWhite rounded-2xl relative lg:h-[300px]">
-        {catColor === "yellow" && <img src={img} alt="img" />}
-        {catColor === "blue" && <img src={img2} alt="img" />}
-        {catColor === "red" && <img src={img3} alt="img" />}
-        {catColor === "green" && <img src={img4} alt="img" />}
-        {catColor === "black" && <img src={img5} alt="img" />}
+        {categoryColor && <img src={productImages[categoryColor]} alt="img" />}
 
         {love === 1 ? (
           <div
@@ -62,44 +55,50 @@ const FourBox = () => {
         <div className="color_category gap-2 flex py-3">
           <div
             className={`${
-              catColor === "green" && "border-2 border-green"
+              categoryColor === "green" && "border-2 border-green"
             } rounded-full  p-[1px] w-[26px] h-[26px]`}
           >
             <button
-              onClick={greenBtn}
+              onClick={() => commonBtn("green")}
               className="w-[20px] h-[20px] bg-green rounded-full "
             ></button>
           </div>
           <div
             className={`
-                ${catColor === "red" && "border-2 border-red"}            
+                ${categoryColor === "red" && "border-2 border-red"}            
                   rounded-full  p-[1px] w-[26px] h-[26px]`}
           >
-            <button onClick={redBtn} className="w-[20px] h-[20px] bg-red rounded-full "></button>
+            <button
+              onClick={() => commonBtn("red")}
+              className="w-[20px] h-[20px] bg-red rounded-full "
+            ></button>
           </div>
           <div
             className={`
-                ${catColor === "blue" && "border-2 border-blue"}          
+                ${categoryColor === "blue" && "border-2 border-blue"}          
                 rounded-full  p-[1px] w-[26px] h-[26px]`}
           >
-            <button onClick={blueBtn} className="w-[20px] h-[20px] bg-blue rounded-full "></button>
+            <button
+              onClick={() => commonBtn("blue")}
+              className="w-[20px] h-[20px] bg-blue rounded-full "
+            ></button>
           </div>
           <div
-            className={`${catColor === "yellow" && "border-2 border-yellow"}
+            className={`${categoryColor === "yellow" && "border-2 border-yellow"}
                  rounded-full  p-[1px] w-[26px] h-[26px]`}
           >
             <button
-              onClick={yellowBtn}
+              onClick={() => commonBtn("yellow")}
               className="w-[20px] h-[20px] bg-yellow rounded-full "
             ></button>
           </div>
 
           <div
-            className={` ${catColor === "black" && "border-2 border-black"}
+            className={` ${categoryColor === "black" && "border-2 border-black"}
                   rounded-full  p-[1px] w-[26px] h-[26px]`}
           >
             <button
-              onClick={blackBtn}
+              onClick={() => commonBtn("black")}
               className="w-[20px] h-[20px] bg-black rounded-full "
             ></button>
           </div>

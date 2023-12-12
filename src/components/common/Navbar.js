@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-self-compare */
 /* eslint-disable array-callback-return */
 
 import { useDispatch, useSelector } from "react-redux";
@@ -11,7 +13,7 @@ import {
   BsPersonCircle,
 } from "react-icons/bs";
 import { TfiMenu } from "react-icons/tfi";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { removeFromCart } from "../../Redux/Slice/CartSlice";
 import useFirebase from "../../hooks/useFirebase";
 import logo from "../../images/logo.PNG";
@@ -22,17 +24,15 @@ const Navbar = () => {
   const { user, logOut } = useFirebase();
 
   const { data } = useSWR(`https://dokan-backend.onrender.com/user/${user.email}`, fetcher);
-  console.log(data?.imageLink);
 
-  //  admin check
-  const isAdmin = user?.email === "santodon176@gmail.com";
-  const [activeItem, setActiveItem] = useState("");
+  const [navItems, setNavItems] = useState("");
   const firstName = user?.displayName?.split(" ")[0];
   const items = useSelector(state => state.cart);
   // console.log(items);
   const dispatch = useDispatch();
   const products = useSelector(state => state.cart);
   const [subTotal, setSubTotal] = useState(0);
+
   // here slice product for cart
   const sliceProduct = products?.slice(0, 4);
 
@@ -52,9 +52,11 @@ const Navbar = () => {
   }, [products]);
 
   // active btn
+
   const handleMenuItemClick = itemName => {
-    setActiveItem(itemName);
+    setNavItems(itemName);
   };
+
   // here make menuitems array
   const menuItems = [
     { label: "Men", to: "/men" },
@@ -80,18 +82,18 @@ const Navbar = () => {
           <div>
             <div className="font-semibold gap-2 flex">
               {menuItems.map(item => (
-                <Link
+                <NavLink
                   key={item.label}
-                  onClick={() => handleMenuItemClick(item.label)}
                   to={item.to}
-                  className={`${
-                    activeItem === item.label
-                      ? "rounded-full bg-black text-white py-3 px-10"
-                      : "hover:bg-offWhite py-3 px-10 rounded-full"
-                  }`}
+                  className={({ isActive }) =>
+                    [
+                      isActive ? "bg-black text-white" : "hover:bg-offWhite ",
+                      "py-3 px-10 rounded-full",
+                    ].join(" ")
+                  }
                 >
                   {item.label}
-                </Link>
+                </NavLink>
               ))}
             </div>
           </div>
@@ -188,26 +190,27 @@ const Navbar = () => {
                 <div>
                   <div className="dropdown">
                     <label tabIndex={0} className=" m-1">
-                      <div className=" flex items-center gap-2  border shadow p-2 rounded-lg cursor-pointer">
+                      <div className="  cursor-pointer">
                         {data?.imageLink ? (
                           <>
                             <img
                               src={data?.imageLink}
                               alt="imageLink"
-                              className="w-9 rounded-full"
+                              className="w-12 rounded-full"
                             />
                           </>
                         ) : (
-                          <BsPerson className="text-2xl" />
+                          <div className="border-2 border-black p-1 rounded-full">
+                            <BsPerson className="text-3xl " />
+                          </div>
                         )}
-                        {firstName}
                       </div>
                     </label>
                     <div
                       tabIndex={0}
                       className=" dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 border"
                     >
-                      {isAdmin ? (
+                      {/* {isAdmin ? (
                         <>
                           <Link to="/adminDash">
                             <button className="p-3 rounded-lg mb-2 text-center hover:bg-slate-200 w-full flex font-bold items-center  gap-3">
@@ -217,8 +220,12 @@ const Navbar = () => {
                         </>
                       ) : (
                         ""
-                      )}
-
+                      )} */}
+                      <Link to="/adminDash">
+                        <button className="p-3 rounded-lg mb-2 text-center hover:bg-slate-200 w-full flex font-bold items-center  gap-3">
+                          <BsHouseFill className="text-[20px]" /> Dashboard
+                        </button>
+                      </Link>
                       <Link to="/user-profile">
                         <button className="p-3 rounded-lg mb-2 text-center hover:bg-slate-200 w-full flex font-bold items-center  gap-3">
                           <BsPersonCircle className="text-[20px]" /> My Account

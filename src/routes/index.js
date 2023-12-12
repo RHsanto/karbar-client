@@ -65,33 +65,33 @@ const Index = () => {
         <Route
           path="/adminDash"
           element={
-            <AdminRoute>
+            <PrivateRoute>
               <MainDashboard />
-            </AdminRoute>
+            </PrivateRoute>
           }
         />
         <Route
           path="/adminDash/orderList"
           element={
-            <AdminRoute>
+            <PrivateRoute>
               <AllOrders />
-            </AdminRoute>
+            </PrivateRoute>
           }
         />
         <Route
           path="/adminDash/productList"
           element={
-            <AdminRoute>
+            <PrivateRoute>
               <AllProducts />
-            </AdminRoute>
+            </PrivateRoute>
           }
         />
         <Route
           path="/adminDash/addProduct"
           element={
-            <AdminRoute>
+            <PrivateRoute>
               <AddProduct />
-            </AdminRoute>
+            </PrivateRoute>
           }
         />
         {/* <Route path="/adminDash/paymentList" element={
@@ -99,17 +99,17 @@ const Index = () => {
         <Route
           path="/adminDash/customer"
           element={
-            <AdminRoute>
+            <PrivateRoute>
               <Customer />
-            </AdminRoute>
+            </PrivateRoute>
           }
         />
         <Route
           path="/order/:id"
           element={
-            <AdminRoute>
+            <PrivateRoute>
               <OrderDetails />
-            </AdminRoute>
+            </PrivateRoute>
           }
         />
       </Routes>

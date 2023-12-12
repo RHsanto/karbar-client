@@ -205,7 +205,7 @@ const AddProduct = () => {
                   </div>
                 </div>
                 <div className="mt-16">
-                  <button type="submit" className="btn btn-info text-white">
+                  <button disabled type="submit" className="btn btn-info text-white">
                     Publish product
                   </button>
                 </div>
