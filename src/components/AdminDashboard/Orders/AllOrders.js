@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable array-callback-return */
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   MdDeleteForever,
   MdDoneAll,
@@ -19,14 +20,17 @@ import useSWR, { useSWRConfig } from "swr";
 import { Link } from "react-router-dom";
 import DashTemplate from "../DashTemplate";
 import DashHeader from "../DashHeader";
+import generatePDF from "react-to-pdf";
+import { ToastContainer, toast } from "react-toastify";
+import copy from "copy-to-clipboard";
+import { useReactToPrint } from "react-to-print";
 // useSWR data fetcher
 const fetcher = (...args) => fetch(...args).then(res => res.json());
 
 const AllOrders = () => {
+  const textRef = useRef();
   const [searchOrder, setSearchOrder] = useState("");
-  // eslint-disable-next-line no-unused-vars
   const { mutate } = useSWRConfig();
-
   const { data: orderList } = useSWR(`https://dokan-backend.onrender.com/orders`, fetcher);
 
   //  orders delete functionality
@@ -43,6 +47,38 @@ const AllOrders = () => {
   //       });
   //   }
   // };
+  // Copy function
+  const copyToClipboard = () => {
+    // Create a string representing the table data
+    const tableData = Array?.from(textRef?.current?.querySelectorAll("tbody tr"))?.map(row =>
+      Array?.from(row.children)
+        ?.map(cell => cell.innerText)
+        ?.join("\t")
+    );
+
+    // Join the rows with a newline character
+    const copyText = tableData?.join("\n");
+
+    // Adding text value to clipboard using copy function
+    let isCopy = copy(copyText);
+
+    if (isCopy) {
+      toast.success(" Copy to clipboard", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
+
+  // Print function
+  const handlePrint = useReactToPrint({
+    content: () => textRef.current,
+  });
 
   return (
     <div className="lg:grid grid-cols-6 ">
@@ -52,6 +88,7 @@ const AllOrders = () => {
       <div className="pt-5 lg:pt-0 m-10 bg-slate-100 col-span-5 rounded-lg ">
         <div className="mb-16">
           <DashHeader />
+          <ToastContainer />
         </div>
         {/* Order list  */}
         <div className="m-10">
@@ -131,19 +168,22 @@ const AllOrders = () => {
                     className="border dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-32"
                   >
                     <li>
-                      <div className="text-[16px]">
+                      <button onClick={handlePrint} className="text-[16px]">
                         <MdOutlineLocalPrintshop /> Print
-                      </div>
+                      </button>
                     </li>
                     <li>
-                      <div className="text-[16px]">
+                      <button
+                        onClick={() => generatePDF(textRef, { filename: "page.pdf" })}
+                        className="text-[16px] my-2"
+                      >
                         <MdPictureAsPdf /> Pdf
-                      </div>
+                      </button>
                     </li>
                     <li>
-                      <div className="text-[16px]">
+                      <button onClick={copyToClipboard} className="text-[16px] ">
                         <MdFileCopy /> Copy
-                      </div>
+                      </button>
                     </li>
                   </ul>
                 </div>
@@ -152,7 +192,7 @@ const AllOrders = () => {
             {/* order lists table*/}
             <div>
               <div className="overflow-x-auto">
-                <table className="table border">
+                <table className="table border" ref={textRef}>
                   {/* head */}
                   <thead className="text-[16px] uppercase">
                     <tr className="bg-slate-300 text-black">

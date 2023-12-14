@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import DashTemplate from "../DashTemplate";
 import DashHeader from "../DashHeader";
 import {
@@ -12,9 +12,14 @@ import {
 } from "react-icons/md";
 import useSWR from "swr";
 import { Link } from "react-router-dom";
+import { useReactToPrint } from "react-to-print";
+import copy from "copy-to-clipboard";
+import { ToastContainer, toast } from "react-toastify";
+import generatePDF from "react-to-pdf";
 
 const fetcher = (...args) => fetch(...args).then(res => res.json());
 const AllProducts = () => {
+  const textRef = useRef();
   // const { mutate } = useSWRConfig();
   const [searchProduct, setSearchProduct] = useState("");
   const { data: products } = useSWR(`https://dokan-backend.onrender.com/products`, fetcher);
@@ -33,6 +38,38 @@ const AllProducts = () => {
   //       });
   //   }
   // };
+  // Copy function
+  const copyToClipboard = () => {
+    // Create a string representing the table data
+    const tableData = Array?.from(textRef?.current?.querySelectorAll("tbody tr"))?.map(row =>
+      Array?.from(row.children)
+        ?.map(cell => cell.innerText)
+        ?.join("\t")
+    );
+
+    // Join the rows with a newline character
+    const copyText = tableData?.join("\n");
+
+    // Adding text value to clipboard using copy function
+    let isCopy = copy(copyText);
+
+    if (isCopy) {
+      toast.success(" Copy to clipboard", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
+
+  // Print function
+  const handlePrint = useReactToPrint({
+    content: () => textRef.current,
+  });
 
   return (
     <div className="lg:grid grid-cols-6">
@@ -42,6 +79,7 @@ const AllProducts = () => {
       <div className="pt-5 lg:pt-0 m-10 bg-slate-100 col-span-5 rounded-lg">
         <div>
           <DashHeader />
+          <ToastContainer />
           <h3 className="mx-10 my-16">
             {" "}
             <span className="text-gray-400">Product /</span> Product List
@@ -81,19 +119,22 @@ const AllProducts = () => {
                   className="border dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-32"
                 >
                   <li>
-                    <div className="text-[16px]">
+                    <button onClick={handlePrint} className="text-[16px]">
                       <MdOutlineLocalPrintshop /> Print
-                    </div>
+                    </button>
                   </li>
                   <li>
-                    <div className="text-[16px]">
+                    <button
+                      onClick={() => generatePDF(textRef, { filename: "page.pdf" })}
+                      className="text-[16px] my-2"
+                    >
                       <MdPictureAsPdf /> Pdf
-                    </div>
+                    </button>
                   </li>
                   <li>
-                    <div className="text-[16px]">
+                    <button onClick={copyToClipboard} className="text-[16px] ">
                       <MdFileCopy /> Copy
-                    </div>
+                    </button>
                   </li>
                 </ul>
               </div>
@@ -108,7 +149,7 @@ const AllProducts = () => {
           {/* product table*/}
           <div>
             <div className="overflow-x-auto">
-              <table className="table border">
+              <table className="table border" ref={textRef}>
                 {/* head */}
                 <thead className="text-[16px] uppercase">
                   <tr className="bg-slate-300 text-black ">

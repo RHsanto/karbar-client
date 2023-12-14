@@ -1,5 +1,5 @@
 /* eslint-disable array-callback-return */
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import DashTemplate from "../DashTemplate";
 import DashHeader from "../DashHeader";
 import useSWR from "swr";
@@ -7,17 +7,24 @@ import {
   MdFileCopy,
   MdOutlineFileDownload,
   MdOutlineLocalPrintshop,
+  MdPerson,
   MdPictureAsPdf,
 } from "react-icons/md";
-import adminImg from "../../../images/pro.png";
+// import adminImg from "../../../images/pro.png";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import copy from "copy-to-clipboard";
+import { useReactToPrint } from "react-to-print";
+import generatePDF from "react-to-pdf";
 
 const fetcher = (...args) => fetch(...args).then(res => res.json());
 
 const Customer = () => {
+  const textRef = useRef();
   const [searchCustomer, setSearchCustomer] = useState("");
   const [countryFlags, setCountryFlags] = useState({});
-  const { data: orderList } = useSWR(`https://dokan-backend.onrender.com/orders`, fetcher);
+  const { data: customerList } = useSWR(`https://dokan-backend.onrender.com/orders`, fetcher);
 
   useEffect(() => {
     // Fetch country flags from rest countries API
@@ -29,7 +36,40 @@ const Customer = () => {
       setCountryFlags(flagsMap);
     });
   }, []);
-  // console.log(countryFlags);
+
+  // Copy function
+  const copyToClipboard = () => {
+    // Create a string representing the table data
+    const tableData = Array?.from(textRef?.current?.querySelectorAll("tbody tr"))?.map(row =>
+      Array?.from(row.children)
+        ?.map(cell => cell.innerText)
+        ?.join("\t")
+    );
+
+    // Join the rows with a newline character
+    const copyText = tableData?.join("\n");
+
+    // Adding text value to clipboard using copy function
+    let isCopy = copy(copyText);
+
+    if (isCopy) {
+      toast.success(" Copy to clipboard", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+  };
+
+  // Print function
+  const handlePrint = useReactToPrint({
+    content: () => textRef.current,
+  });
+
   return (
     <div className="lg:grid grid-cols-6">
       <div className="cols-span-1 m-5">
@@ -37,6 +77,7 @@ const Customer = () => {
       </div>
       <div className="pt-5 lg:pt-0 m-10 bg-slate-100 col-span-5 rounded-lg">
         <div>
+          <ToastContainer />
           <DashHeader />
         </div>
         {/* customer table */}
@@ -77,19 +118,22 @@ const Customer = () => {
                     className="border dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-32"
                   >
                     <li>
-                      <div className="text-[16px]">
+                      <button onClick={handlePrint} className="text-[16px]">
                         <MdOutlineLocalPrintshop /> Print
-                      </div>
+                      </button>
                     </li>
                     <li>
-                      <div className="text-[16px]">
+                      <button
+                        onClick={() => generatePDF(textRef, { filename: "page.pdf" })}
+                        className="text-[16px] my-2"
+                      >
                         <MdPictureAsPdf /> Pdf
-                      </div>
+                      </button>
                     </li>
                     <li>
-                      <div className="text-[16px]">
+                      <button onClick={copyToClipboard} className="text-[16px] ">
                         <MdFileCopy /> Copy
-                      </div>
+                      </button>
                     </li>
                   </ul>
                 </div>
@@ -98,7 +142,7 @@ const Customer = () => {
             {/* customer lists table*/}
             <div>
               <div className="overflow-x-auto">
-                <table className="table border">
+                <table className="table border" ref={textRef}>
                   {/* head */}
                   <thead className="text-[16px] uppercase">
                     <tr className="bg-slate-300 text-black">
@@ -112,14 +156,14 @@ const Customer = () => {
                   </thead>
                   <tbody>
                     {/* Loading animation */}
-                    {!orderList && (
+                    {!customerList && (
                       <div className="m-10 flex items-center gap-4">
                         Loading
                         <span className="loading loading-dots loading-lg"></span>
                       </div>
                     )}
-                    {orderList &&
-                      orderList
+                    {customerList &&
+                      customerList
                         .filter(items => {
                           if (searchCustomer === "") {
                             return items;
@@ -146,7 +190,10 @@ const Customer = () => {
                               <td className="text-blue font-bold">{data?._id.slice(3, 9)}</td>
                               <td>
                                 <div className="flex items-center space-x-3">
-                                  <img className="w-12 rounded-lg" src={adminImg} alt="adminImg" />
+                                  {/* <img className="w-12 rounded-lg" src={adminImg} alt="adminImg" /> */}
+                                  <h3 className="border-2 rounded-lg border-black">
+                                    <MdPerson />
+                                  </h3>
                                   <div>
                                     <div className="font-bold">
                                       {data?.firstName} {data?.lastName}
