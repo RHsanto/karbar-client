@@ -192,13 +192,14 @@ const Navbar = () => {
                     <label tabIndex={0} className=" m-1">
                       <div className="  cursor-pointer">
                         {data?.imageLink ? (
-                          <>
+                          <button className="px-3 btn flex items-center gap-2">
                             <img
                               src={data?.imageLink}
                               alt="imageLink"
-                              className="w-12 rounded-full"
+                              className="w-10 rounded-full"
                             />
-                          </>
+                            {firstName}
+                          </button>
                         ) : (
                           <div className="border-2 border-black p-1 rounded-full">
                             <BsPerson className="text-3xl " />
