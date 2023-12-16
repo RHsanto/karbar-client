@@ -16,12 +16,14 @@ import { useReactToPrint } from "react-to-print";
 import copy from "copy-to-clipboard";
 import { ToastContainer, toast } from "react-toastify";
 import generatePDF from "react-to-pdf";
+import Pagination from "../Pagination";
 
 const fetcher = (...args) => fetch(...args).then(res => res.json());
 const AllProducts = () => {
   const textRef = useRef();
   // const { mutate } = useSWRConfig();
   const [searchProduct, setSearchProduct] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
   const { data: products } = useSWR(`https://dokan-backend.onrender.com/products`, fetcher);
 
   //  product delete func
@@ -70,6 +72,30 @@ const AllProducts = () => {
   const handlePrint = useReactToPrint({
     content: () => textRef.current,
   });
+
+  // Pagination
+  const ITEMS_PER_PAGE = 10;
+  const firstIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const lastIndex = currentPage * ITEMS_PER_PAGE;
+  const totalPages = Math.ceil((Array.isArray(products) ? products.length : 0) / ITEMS_PER_PAGE);
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const changePage = page => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
 
   return (
     <div className="lg:grid grid-cols-6">
@@ -173,6 +199,7 @@ const AllProducts = () => {
                   )}
                   {products &&
                     products
+                      .slice(firstIndex, lastIndex)
                       .filter(items => {
                         if (setSearchProduct === "") {
                           return items;
@@ -220,6 +247,16 @@ const AllProducts = () => {
                       ))}
                 </tbody>
               </table>
+              {/* pagination */}
+              <div className="p-5">
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  prevPage={prevPage}
+                  nextPage={nextPage}
+                  changePage={changePage}
+                />
+              </div>
             </div>
           </div>
         </div>

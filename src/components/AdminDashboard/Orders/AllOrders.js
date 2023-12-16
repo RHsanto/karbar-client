@@ -24,12 +24,14 @@ import generatePDF from "react-to-pdf";
 import { ToastContainer, toast } from "react-toastify";
 import copy from "copy-to-clipboard";
 import { useReactToPrint } from "react-to-print";
+import Pagination from "../Pagination";
 // useSWR data fetcher
 const fetcher = (...args) => fetch(...args).then(res => res.json());
 
 const AllOrders = () => {
   const textRef = useRef();
   const [searchOrder, setSearchOrder] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
   const { mutate } = useSWRConfig();
   const { data: orderList } = useSWR(`https://dokan-backend.onrender.com/orders`, fetcher);
 
@@ -80,8 +82,32 @@ const AllOrders = () => {
     content: () => textRef.current,
   });
 
+  // Pagination Function
+  const ITEMS_PER_PAGE = 10;
+  const firstIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+  const lastIndex = currentPage * ITEMS_PER_PAGE;
+  const totalPages = Math.ceil((Array.isArray(orderList) ? orderList.length : 0) / ITEMS_PER_PAGE);
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const changePage = page => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
+
   return (
-    <div className="lg:grid grid-cols-6 ">
+    <div className="lg:grid grid-cols-6 h-[2000px]">
       <div className="cols-span-1 m-5">
         <DashTemplate />
       </div>
@@ -215,6 +241,7 @@ const AllOrders = () => {
                     )}
                     {orderList &&
                       orderList
+                        .slice(firstIndex, lastIndex)
                         .filter(items => {
                           if (searchOrder === "") {
                             return items;
@@ -275,6 +302,16 @@ const AllOrders = () => {
                         ))}
                   </tbody>
                 </table>
+                {/* pagination */}
+                <div className="p-5">
+                  <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    prevPage={prevPage}
+                    nextPage={nextPage}
+                    changePage={changePage}
+                  />
+                </div>
               </div>
             </div>
           </div>
