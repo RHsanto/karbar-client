@@ -11,6 +11,7 @@ import {
   MdOutlinePendingActions,
   MdOutlineSmsFailed,
   MdOutlineViewInAr,
+  MdPerson,
   MdPictureAsPdf,
 } from "react-icons/md";
 import { BiLoaderCircle } from "react-icons/bi";
@@ -175,11 +176,11 @@ const AllOrders = () => {
               </div>
               <div className="flex gap-5 items-center">
                 {/* Pagination */}
-                <select className="select select-bordered w-full max-w-xs">
+                {/* <select className="select select-bordered w-full max-w-xs">
                   <option>10</option>
                   <option>20</option>
                   <option>30</option>
-                </select>
+                </select> */}
 
                 {/* Exports Orders*/}
                 <div className="dropdown dropdown-bottom dropdown-end">
@@ -258,11 +259,9 @@ const AllOrders = () => {
                             <td>{data?.date}</td>
                             <td>
                               <div className="flex items-center space-x-3">
-                                <div className="avatar">
-                                  <div className="mask mask-squircle w-12 h-12">
-                                    <img src={adminImg} alt="adminImg" />
-                                  </div>
-                                </div>
+                                <h3 className="border-2 rounded-full border-black">
+                                  <MdPerson />
+                                </h3>
                                 <div>
                                   <div className="font-bold">
                                     {data?.firstName} {data?.lastName}

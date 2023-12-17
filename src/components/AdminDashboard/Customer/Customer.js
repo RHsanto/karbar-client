@@ -127,11 +127,11 @@ const Customer = () => {
               </div>
               <div className="flex gap-5 items-center">
                 {/* Pagination */}
-                <select className="select select-bordered w-full max-w-xs">
+                {/* <select className="select select-bordered w-full max-w-xs">
                   <option>10</option>
                   <option>20</option>
                   <option>30</option>
-                </select>
+                </select> */}
 
                 {/* Exports Orders*/}
                 <div className="dropdown dropdown-bottom dropdown-end">

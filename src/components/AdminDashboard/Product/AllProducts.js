@@ -125,13 +125,6 @@ const AllProducts = () => {
               />
             </div>
             <div className="flex gap-4 items-center">
-              {/* Pagination */}
-              <select className="select select-bordered w-full max-w-xs">
-                <option>10</option>
-                <option>20</option>
-                <option>30</option>
-              </select>
-
               {/* Exports Orders*/}
               <div className="dropdown dropdown-bottom dropdown-end">
                 <label tabIndex={0} className="btn m-1 ">
