@@ -1,15 +1,15 @@
-# Karbar [Create React App](https://karbar.vercel.app).
+# [Karbar](https://karbar.vercel.app).
 
 # Used Technologies
 
-## Frontend
+Frontend
 
 - Language : JavaScript
 - UI Library : React.js
 - UI Design Framework : Tailwind, Daisy UI
 - State Management : Redux-Toolkit
 
-## Backend
+Backend
 
 - Language : Node.js
 - Framework : Express.js
