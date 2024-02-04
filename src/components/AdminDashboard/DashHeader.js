@@ -1,14 +1,15 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
-import { BiLogOutCircle } from "react-icons/bi";
-import { FaUserCheck } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import adminImg from "../../images/pro.png";
-import useFirebase from "../../hooks/useFirebase";
 import { FcHome } from "react-icons/fc";
+import { BsPerson } from "react-icons/bs";
+import useFirebase from "../../hooks/useFirebase";
+import useSWR from "swr";
+import adminImg from "../../../src/images/robin-hood.jpg";
+const fetcher = (...args) => fetch(...args).then(res => res.json());
 const DashHeader = () => {
   const { user } = useFirebase();
-
+  const { data } = useSWR(`https://dokan-backend.onrender.com/user/${user.email}`, fetcher);
   return (
     <div>
       {/*  Dashboard Header */}
@@ -23,13 +24,13 @@ const DashHeader = () => {
           <div>
             {" "}
             <div className="avatar online">
-              <div className="w-12 rounded-full">
+              <div className="w-12  rounded-full">
                 <img src={adminImg} alt="img" />
               </div>
             </div>
           </div>
           <div className="lg:block hidden">
-            <h5>{user?.displayName}</h5>
+            <h5>Robin Hood</h5>
             <p>Admin</p>
           </div>
         </div>
