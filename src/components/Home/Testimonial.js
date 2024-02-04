@@ -48,7 +48,7 @@ const Testimonial = () => {
                     <div className="mt-10 flex items-center gap-4">
                       <img className="w-20" src={test} alt="" />
                       <div>
-                        <h5>Rakibul Hasan</h5>
+                        <h5>Robin Hood</h5>
                         <p>Programmer</p>
                       </div>
                     </div>

@@ -83,6 +83,10 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      {/* copyright */}
+      <div>
+        <p className="text-center py-4 border-t-2 text-[16px]"> &copy; All Right Reserved RH</p>
+      </div>
     </div>
   );
 };
