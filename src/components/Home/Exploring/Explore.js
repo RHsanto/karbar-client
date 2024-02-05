@@ -41,18 +41,18 @@ const Explore = () => {
 
       {/* for  small device  */}
       <div
-        className="lg:hidden flex 
+        className="lg:hidden grid grid-cols-5
           mt-10 bg-white  mx-5 
-        shadow-lg rounded-full p-1 "
+        shadow-lg rounded-full p-1 gap-2 "
       >
         {categories.map(category => (
           <button
             key={category.label}
             onClick={() => handleActiveBtn(category)}
             className={`${select === category.label && "bg-black text-white"}
-            rounded-full py-1 px-3 flex items-center`}
+            rounded-full  flex items-center justify-center px-2 py-1`}
           >
-            {category.icon}
+            {/* {category.icon} */}
             <small> {category.label}</small>
           </button>
         ))}

@@ -278,7 +278,7 @@ const Navbar = () => {
                 {/* Sidebar content here */}
                 <div className="text-center">
                   <Link to="/">
-                    <h3>Dokan</h3>
+                    <h3>Karbar</h3>
                   </Link>
                 </div>
                 <div className="border-t flex flex-col border-b px-2 py-5 font-bold uppercase">
