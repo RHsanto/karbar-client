@@ -3,7 +3,7 @@ import React from "react";
 const Skeleton = () => {
   return (
     // Write Skelton animation
-    <div className="flex gap-5">
+    <div className="lg:flex gap-5">
       <div>
         <div className=" border border-blue-300 shadow rounded-2xl p-3 max-w-sm w-80 mx-auto h">
           <div className="animate-pulse">
