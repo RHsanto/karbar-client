@@ -4,19 +4,31 @@ import React, { useState } from "react";
 import { AiFillStar } from "react-icons/ai";
 import { BsArrowsFullscreen, BsCart4, BsFillBagCheckFill, BsStars } from "react-icons/bs";
 import { RxCross1 } from "react-icons/rx";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../../Redux/Slice/CartSlice";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Product = ({ product }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [size, setSize] = useState("S");
   const [showModal, setShowModal] = useState(false);
+
   const dispatch = useDispatch();
   // add cart
   const handleAdd = product => {
+    // Product is not in the cart, add it and show success toast message
     dispatch(addToCart(product));
+    toast.success("Added to Cart", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
-
   // here add modal products
   const handleProductClick = product => {
     setSelectedProduct(product);

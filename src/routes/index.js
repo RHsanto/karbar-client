@@ -26,10 +26,12 @@ import AddProduct from "../components/AdminDashboard/Product/AddProduct";
 import AdminRoute from "../ProtectRoute/AdminRoute";
 import ProtectMsg from "../ProtectRoute/ProtectMsg";
 import UserProfile from "../components/Home/Cart/UserDashboard/UserProfile";
+import { ToastContainer } from "react-toastify";
 const Index = () => {
   return (
     <BrowserRouter>
       {/* <Navbar /> */}
+      <ToastContainer className="mt-20" />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/men" element={<Mans />} />

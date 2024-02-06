@@ -11,6 +11,7 @@ import { addToCart } from "../../../Redux/Slice/CartSlice";
 import Skeleton from "../Skeleton";
 import Navbar from "../../common/Navbar";
 import Footer from "../../common/Footer";
+import { toast } from "react-toastify";
 
 const Mans = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -57,9 +58,18 @@ const Mans = () => {
     applyFilters();
   }, [products, priceFilter, categoryFilter, sizeFilter, colorFilter]);
 
-  // add cart
+  // add cart functionality
   const handleAdd = product => {
     dispatch(addToCart(product));
+    toast.success("Added to Cart", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   // here add modal products

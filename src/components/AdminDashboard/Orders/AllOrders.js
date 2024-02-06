@@ -22,7 +22,7 @@ import { Link } from "react-router-dom";
 import DashTemplate from "../DashTemplate";
 import DashHeader from "../DashHeader";
 import generatePDF from "react-to-pdf";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import copy from "copy-to-clipboard";
 import { useReactToPrint } from "react-to-print";
 import Pagination from "../Pagination";
@@ -115,7 +115,6 @@ const AllOrders = () => {
       <div className="pt-5 lg:pt-0 m-10 bg-slate-100 col-span-5 rounded-lg ">
         <div className="mb-16">
           <DashHeader />
-          <ToastContainer />
         </div>
         {/* Order list  */}
         <div className="m-10">

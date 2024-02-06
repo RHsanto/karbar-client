@@ -14,7 +14,7 @@ import useSWR from "swr";
 import { Link } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 import copy from "copy-to-clipboard";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import generatePDF from "react-to-pdf";
 import Pagination from "../Pagination";
 
@@ -105,7 +105,7 @@ const AllProducts = () => {
       <div className="pt-5 lg:pt-0 m-10 bg-slate-100 col-span-5 rounded-lg">
         <div>
           <DashHeader />
-          <ToastContainer />
+
           <h3 className="mx-10 my-16">
             {" "}
             <span className="text-gray-400">Product /</span> Product List

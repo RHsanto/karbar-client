@@ -11,6 +11,7 @@ import { fetchProductsByType } from "../../../Redux/Slice/ProductSlice";
 import Skeleton from "../Skeleton";
 import Navbar from "../../common/Navbar";
 import Footer from "../../common/Footer";
+import { toast } from "react-toastify";
 
 const Jewels = () => {
   const [filteredProducts, setFilteredProducts] = useState([]);
@@ -60,6 +61,15 @@ const Jewels = () => {
   // add cart
   const handleAdd = product => {
     dispatch(addToCart(product));
+    toast.success("Added to Cart", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
   };
 
   // here add modal products

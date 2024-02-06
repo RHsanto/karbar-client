@@ -12,7 +12,7 @@ import {
 } from "react-icons/md";
 // import adminImg from "../../../images/pro.png";
 import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import copy from "copy-to-clipboard";
 import { useReactToPrint } from "react-to-print";
@@ -105,7 +105,6 @@ const Customer = () => {
       </div>
       <div className="pt-5 lg:pt-0 m-10 bg-slate-100 col-span-5 rounded-lg">
         <div>
-          <ToastContainer />
           <DashHeader />
         </div>
         {/* customer table */}
