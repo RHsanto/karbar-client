@@ -4,7 +4,7 @@ import img from "../../images/chil.png";
 const SpecialOffer = () => {
   return (
     <div className="container mx-auto lg:px-32   my-20">
-      <div className="p-10 lg:p-0 grid grid-cols-2 gap-10  items-center bg-[#FEFCE8] rounded-2xl">
+      <div className="p-10 lg:p-0 grid lg:grid-cols-2 md:grid-cols-2 gap-10  items-center bg-[#FEFCE8] rounded-2xl">
         <div>
           <img src={img} alt="img" />
         </div>

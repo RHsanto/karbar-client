@@ -307,33 +307,31 @@ const Navbar = () => {
           {/* Login user info */}
           <div>
             {user?.email ? (
-              <div>
-                <div className="dropdown">
-                  <label tabIndex={0} className="m-1">
-                    <div className="flex items-center gap-2 border-2 border-black p-2 rounded-full cursor-pointer">
-                      <BsPerson className="text-2xl" />
-                    </div>
-                  </label>
-                  <div
-                    tabIndex={0}
-                    className=" border dropdown-content  menu p-2 shadow bg-base-100 rounded-box w-52 lg:-ml-10 -ml-28 "
-                  >
-                    <div className="p-3  mb-2 text-center border-b-2 font-bold capitalize">
-                      {firstName}
-                    </div>
-                    <div className="p-3.5 rounded-lg mb-2 text-center hover:bg-slate-100">
-                      <Link to="/cart">My Orders</Link>
-                    </div>
-                    <div>
-                      <button onClick={logOut} className="btn btn-error w-full text-white">
-                        Sign out
-                      </button>
-                    </div>
+              <div className="dropdown">
+                <label tabIndex={0} className="m-1">
+                  <div className="flex items-center gap-2 border-2 border-black p-2 rounded-full cursor-pointer">
+                    <BsPerson className="text-2xl" />
+                  </div>
+                </label>
+                <div
+                  tabIndex={0}
+                  className=" border dropdown-content  menu p-2 shadow bg-base-100 rounded-box w-52 lg:-ml-10 -ml-28 "
+                >
+                  <div className="p-3  mb-2 text-center border-b-2 font-bold capitalize">
+                    {firstName}
+                  </div>
+                  <div className="p-3.5 rounded-lg mb-2 text-center hover:bg-slate-100">
+                    <Link to="/cart">My Orders</Link>
+                  </div>
+                  <div>
+                    <button onClick={logOut} className="btn btn-error w-full text-white">
+                      Sign out
+                    </button>
                   </div>
                 </div>
               </div>
             ) : (
-              <div>
+              <div className=" my-3">
                 <Link to="/login">
                   <button className="btn btn-info text-white">Sign in</button>
                 </Link>
