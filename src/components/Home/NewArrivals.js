@@ -9,7 +9,7 @@ const NewArrivals = () => {
       <h3 className="lg:p-0 p-5 my-10">
         New Arrivals.<span className="opacity-50"> REY backpacks & bags </span>
       </h3>
-      <div className=" grid lg:grid-cols-4 gap-10 lg:py-16 py-5 m-5 lg:m-0">
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-10 lg:py-16 py-5 m-5 lg:m-0">
         <OneBox />
         <TwoBox />
         <ThreeBox />

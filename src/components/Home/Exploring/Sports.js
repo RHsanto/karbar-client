@@ -54,7 +54,7 @@ const Sports = () => {
   ];
 
   return (
-    <div className="lg:grid grid-cols-3 lg:px-32 p-10  gap-10">
+    <div className="grid lg:grid-cols-3 md:grid-cols-2 lg:px-32 p-10  gap-10">
       {product?.map(data => (
         <div
           key={data?.id}

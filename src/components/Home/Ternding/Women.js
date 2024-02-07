@@ -296,7 +296,7 @@ const Women = () => {
             </div>
           </div>
           {/* here Filter Results */}
-          <div className="lg:grid grid-cols-3 gap-8 p-10 lg:p-0">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-8 p-10 lg:p-0">
             {error && <h5 className="text-red">Internal server error....</h5>}
             {loading ? (
               <Skeleton />
@@ -320,7 +320,7 @@ const Women = () => {
                       )}
                       {/* here hover items */}
                       <div className="hidden absolute left-4 bottom-3 select_size ">
-                        <div className="flex my-3">
+                        <div className="lg:flex md:flex hidden my-3">
                           <button
                             onClick={() => handleAdd(product)}
                             className=" bg-black text-white px-3 py-2 rounded-full"

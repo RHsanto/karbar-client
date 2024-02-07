@@ -24,8 +24,8 @@ const Testimonial = () => {
             <img className="rounded-b-full" src={girlImg} alt="" />
           </div>
           <div>
-            <h2 className="leading-[70px]">What our clients say about us</h2>
-            <div className="my-5">
+            <h2 className="lg:leading-[70px]">What our clients say about us</h2>
+            <div className="my-5 mt-10 lg:mt-0">
               <Swiper
                 spaceBetween={30}
                 centeredSlides={true}

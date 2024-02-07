@@ -15,7 +15,7 @@ const Department = () => {
     <div className="container mx-auto lg:px-32">
       <div>
         <h3 className="mb-14 lg:pl-0 pl-5">Shop by department</h3>
-        <div className="lg:grid grid-cols-4 gap-6 p-5 lg:p-0">
+        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-6 p-5 lg:p-0">
           {items.map(item => (
             <Link to="/men">
               <div key={item.id}>

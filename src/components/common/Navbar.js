@@ -68,7 +68,7 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="z-[9999] bg-white sticky  border-b top-0">
+    <div className="z-[9999] bg-white sticky  border-b top-0 ">
       {/* large screen menu */}
       <div className="lg:block hidden">
         <div className=" container px-32 mx-auto  h-20  flex justify-between items-center ">
@@ -257,6 +257,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+
       {/* small device menu */}
       <div className="lg:hidden flex justify-between  items-center mx-5">
         {/* drawer items */}
@@ -315,7 +316,7 @@ const Navbar = () => {
                   </label>
                   <div
                     tabIndex={0}
-                    className=" border dropdown-content  menu p-2 shadow bg-base-100 rounded-box w-52 -ml-10"
+                    className=" border dropdown-content  menu p-2 shadow bg-base-100 rounded-box w-52 lg:-ml-10 -ml-20 "
                   >
                     <div className="p-3.5 rounded-lg mb-2 text-center hover:bg-slate-100">
                       <Link to="/cart">My Orders</Link>

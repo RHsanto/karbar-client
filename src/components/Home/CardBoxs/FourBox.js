@@ -4,37 +4,37 @@ import img2 from "../../../images/products/2.png";
 import img3 from "../../../images/products/3.png";
 import img4 from "../../../images/products/4.png";
 import img5 from "../../../images/products/5.png";
+
 import { AiFillHeart, AiOutlineHeart, AiFillStar } from "react-icons/ai";
 
 const FourBox = () => {
   const [love, setLove] = useState(1);
-  const [categoryColor, setCategoryColor] = useState("green");
+  const [catColor, setCatColor] = useState("yellow");
+
   const handleLove = () => {
     setLove(1);
   };
+
   const removeLove = () => {
     setLove(-1);
   };
 
-  // category color selector
-
-  const commonBtn = item => {
-    setCategoryColor(item);
+  const handleColorChange = color => {
+    setCatColor(color);
   };
 
-  const productImages = {
-    yellow: img,
-    blue: img2,
-    red: img3,
-    green: img4,
+  const colorImages = {
+    yellow: img4,
+    blue: img3,
+    red: img,
+    green: img2,
     black: img5,
   };
 
   return (
     <div>
-      <div className="bg-bgWhite rounded-2xl relative lg:h-[300px]">
-        {categoryColor && <img src={productImages[categoryColor]} alt="img" />}
-
+      <div className="hover_img cursor-pointer bg-bgWhite rounded-2xl relative lg:h-[300px] md:h-[340px]">
+        <img src={colorImages[catColor]} alt="img" />
         {love === 1 ? (
           <div
             onClick={removeLove}
@@ -51,64 +51,28 @@ const FourBox = () => {
           </div>
         )}
       </div>
-      <div className="product_info  p-3 relative">
+      <div className="product_info p-3 relative">
         <div className="color_category gap-2 flex py-3">
-          <div
-            className={`${
-              categoryColor === "green" && "border-2 border-green"
-            } rounded-full  p-[1px] w-[26px] h-[26px]`}
-          >
-            <button
-              onClick={() => commonBtn("green")}
-              className="w-[20px] h-[20px] bg-green rounded-full "
-            ></button>
-          </div>
-          <div
-            className={`
-                ${categoryColor === "red" && "border-2 border-red"}            
-                  rounded-full  p-[1px] w-[26px] h-[26px]`}
-          >
-            <button
-              onClick={() => commonBtn("red")}
-              className="w-[20px] h-[20px] bg-red rounded-full "
-            ></button>
-          </div>
-          <div
-            className={`
-                ${categoryColor === "blue" && "border-2 border-blue"}          
-                rounded-full  p-[1px] w-[26px] h-[26px]`}
-          >
-            <button
-              onClick={() => commonBtn("blue")}
-              className="w-[20px] h-[20px] bg-blue rounded-full "
-            ></button>
-          </div>
-          <div
-            className={`${categoryColor === "yellow" && "border-2 border-yellow"}
-                 rounded-full  p-[1px] w-[26px] h-[26px]`}
-          >
-            <button
-              onClick={() => commonBtn("yellow")}
-              className="w-[20px] h-[20px] bg-yellow rounded-full "
-            ></button>
-          </div>
-
-          <div
-            className={` ${categoryColor === "black" && "border-2 border-black"}
-                  rounded-full  p-[1px] w-[26px] h-[26px]`}
-          >
-            <button
-              onClick={() => commonBtn("black")}
-              className="w-[20px] h-[20px] bg-black rounded-full "
-            ></button>
-          </div>
+          {["yellow", "blue", "red", "green", "black"].map(color => (
+            <div
+              key={color}
+              className={`${
+                catColor === color && "border-2 border-" + color
+              } rounded-full p-[1px] w-[26px] h-[26px]`}
+            >
+              <button
+                onClick={() => handleColorChange(color)}
+                className={`w-[20px] h-[20px] bg-${color} rounded-full`}
+              ></button>
+            </div>
+          ))}
         </div>
         <div className="product_details py-3">
           <h5>Leather Gloves</h5>
           <p className="pt-1">Perfect mint green</p>
           <div className="price_review py-5 flex justify-between">
             <button className="text-green font-bold border-2 px-2 rounded-lg border-green">
-              $99.00
+              $45.00
             </button>
             <p className="flex items-center">
               <AiFillStar className="text-yellow" /> 4.5 (62 reviews)

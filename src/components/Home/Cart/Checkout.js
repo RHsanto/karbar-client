@@ -86,7 +86,7 @@ const Checkout = () => {
                         {...register("firstName")}
                         type="text"
                         placeholder="Type here First name"
-                        className="input input-bordered w-96 mt-2"
+                        className="input input-bordered lg:w-96 w-full mt-2"
                       />
                     </div>
                     <div className="mt-5 lg:mt-0">
@@ -96,7 +96,7 @@ const Checkout = () => {
                         {...register("lastName")}
                         type="text"
                         placeholder="Type here Last name"
-                        className="input input-bordered w-96 mt-2 "
+                        className="input input-bordered lg:w-96 w-full mt-2 "
                       />
                     </div>
                   </div>
@@ -109,7 +109,7 @@ const Checkout = () => {
                         {...register("phone")}
                         type="number"
                         placeholder="Type here Phone No"
-                        className="input input-bordered w-96 mt-2"
+                        className="input input-bordered lg:w-96 w-full mt-2"
                       />
                     </div>
                     <div className="mt-5 lg:mt-0">
@@ -119,7 +119,7 @@ const Checkout = () => {
                         {...register("altNo")}
                         type="number"
                         placeholder="Type here Phone No"
-                        className="input input-bordered w-96 mt-2 "
+                        className="input input-bordered lg:w-96 w-full mt-2 "
                       />
                     </div>
                   </div>
@@ -131,7 +131,7 @@ const Checkout = () => {
                         required
                         {...register("country")}
                         id="countrySelect"
-                        className="select select-bordered mt-2 w-96"
+                        className="select select-bordered mt-2 lg:w-96 w-full"
                       >
                         <option value="">Select a country</option>
                         {countries.map(country => (
@@ -148,7 +148,7 @@ const Checkout = () => {
                         {...register("city")}
                         type="text"
                         placeholder="Type here Phone No"
-                        className="input input-bordered w-96 mt-2 "
+                        className="input input-bordered lg:w-96 w-full mt-2 "
                       />
                     </div>
                   </div>

@@ -38,15 +38,15 @@ const Cart = () => {
     <>
       <Navbar />
       <div className="container mx-auto lg:px-32 py-10">
-        <h3 className="my-10">Shopping Cart</h3>
+        <h3 className="my-10 text-center lg:text-left">Shopping Cart</h3>
         <div className="border-t my-10">
-          <div className="grid grid-cols-3">
+          <div className="lg:grid grid-cols-3">
             <div className="col-span-2 p-5">
               {products.map(product => (
                 <div key={product?._id} className="flex justify-between my-10 border-b pb-10">
-                  <div className=" flex gap-5">
+                  <div className=" flex lg:gap-5 gap-3">
                     <img
-                      className="w-32 h-36 bg-[#F1F5F9] rounded-lg"
+                      className="lg:w-32 lg:h-36 w-22 h-28 bg-[#F1F5F9] rounded-lg"
                       src={product?.productImg}
                       alt="img"
                     />
@@ -54,7 +54,7 @@ const Cart = () => {
                       <h5 className="mb-1">{product?.name}</h5>
                       <span>{product?.description}</span> <br />
                       {product?.message ? (
-                        <button className="border mt-4 px-4 py-1 rounded-full ">
+                        <button className="border mt-4 lg:px-4 lg:py-1 px-2 rounded-full ">
                           {product?.message}
                         </button>
                       ) : (
@@ -62,7 +62,7 @@ const Cart = () => {
                       )}
                     </div>
                   </div>
-                  <div className="flex items-center gap-5">
+                  <div className="hidden lg:flex items-center gap-5">
                     <button onClick={() => handleDecrement(product?._id)}>
                       <SlMinus className="text-3xl" />
                     </button>

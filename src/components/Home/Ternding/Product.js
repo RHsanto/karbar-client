@@ -57,8 +57,8 @@ const Product = ({ product }) => {
           ""
         )}
         {/* here hover items */}
-        <div className="hidden absolute left-16 lg:left-4 bottom-3 select_size ">
-          <div className="flex my-3 justify-between">
+        <div className="hidden absolute left-16 lg:left-4 md:left-8 bottom-3 select_size ">
+          <div className="lg:flex md:flex hidden my-3 justify-between">
             <button
               onClick={() => handleAdd(product)}
               className=" bg-black text-white px-3 py-2 rounded-full"

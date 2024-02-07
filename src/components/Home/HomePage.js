@@ -16,7 +16,7 @@ import Testimonial from "./Testimonial";
 
 const HomePage = () => {
   return (
-    <div className="px-7">
+    <div className="px-">
       <Navbar />
       <HeroSection />
       <Discover />

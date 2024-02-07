@@ -19,7 +19,7 @@ const Discover = () => {
             <div key={data.id} className="mb-10">
               <div
                 style={{ background: data.bg }}
-                className={`cursor-pointer mx-3 flex  p-5  rounded-2xl  h-56`}
+                className={`cursor-pointer mx-3 flex justify-between p-5  rounded-2xl  lg:h-56`}
               >
                 <div className="relative">
                   <p>Explore new arrivals</p>

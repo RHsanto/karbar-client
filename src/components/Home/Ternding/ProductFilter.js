@@ -115,7 +115,7 @@ const ProductFilter = () => {
       </div>
 
       {/* Display Filtered Products */}
-      <div className="lg:grid grid-cols-4 gap-8 p-10 lg:p-0">
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8 p-10 lg:p-0">
         {error && <h5 className="text-red">Internal server error....</h5>}
         {loading ? (
           <Skeleton />

@@ -47,7 +47,7 @@ const AllStep = () => {
         </span>
       </div>
 
-      <div className="lg:grid grid-cols-4 gap-10 items-center lg:py-32 mb-32 border-y-2  ">
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-10 items-center lg:py-32 mb-32 lg:border-y-2  ">
         {allStep.map(step => (
           <div key={step?.id}>
             <div className="w-[140px] h-[140px]  mx-auto mb-3">
