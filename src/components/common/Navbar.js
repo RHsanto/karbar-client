@@ -301,23 +301,26 @@ const Navbar = () => {
         <Link className=" flex items-center" to="/">
           <img className="w-[50px]" src={logo} alt="" /> <h4> Karbar</h4>
         </Link>
-        {/* cart and user */}
-        <div className="flex items-center gap-5">
+
+        {/* user info and cart */}
+        <div className="flex items-center gap-3">
           {/* Login user info */}
           <div>
             {user?.email ? (
               <div>
                 <div className="dropdown">
                   <label tabIndex={0} className="m-1">
-                    <div className="flex items-center gap-2 border-2 border-black p-2 rounded-lg cursor-pointer">
+                    <div className="flex items-center gap-2 border-2 border-black p-2 rounded-full cursor-pointer">
                       <BsPerson className="text-2xl" />
-                      {firstName}
                     </div>
                   </label>
                   <div
                     tabIndex={0}
-                    className=" border dropdown-content  menu p-2 shadow bg-base-100 rounded-box w-52 lg:-ml-10 -ml-20 "
+                    className=" border dropdown-content  menu p-2 shadow bg-base-100 rounded-box w-52 lg:-ml-10 -ml-28 "
                   >
+                    <div className="p-3  mb-2 text-center border-b-2 font-bold capitalize">
+                      {firstName}
+                    </div>
                     <div className="p-3.5 rounded-lg mb-2 text-center hover:bg-slate-100">
                       <Link to="/cart">My Orders</Link>
                     </div>
@@ -336,6 +339,17 @@ const Navbar = () => {
                 </Link>
               </div>
             )}
+          </div>
+          {/* here cart button*/}
+          <div>
+            <Link to="/cart">
+              <div className="indicator">
+                <span className="indicator-item badge bg-blue text-white">{items?.length}</span>
+                <button className="border-2 border-black rounded-full p-2">
+                  <BsCart4 className="text-2xl" />
+                </button>
+              </div>
+            </Link>
           </div>
         </div>
       </div>
