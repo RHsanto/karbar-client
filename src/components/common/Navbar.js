@@ -18,6 +18,7 @@ import { removeFromCart } from "../../Redux/Slice/CartSlice";
 import useFirebase from "../../hooks/useFirebase";
 import logo from "../../images/logo.PNG";
 import useSWR from "swr";
+
 const fetcher = (...args) => fetch(...args).then(res => res.json());
 
 const Navbar = () => {
@@ -52,7 +53,6 @@ const Navbar = () => {
   }, [products]);
 
   // active btn
-
   const handleMenuItemClick = itemName => {
     setNavItems(itemName);
   };
@@ -196,14 +196,17 @@ const Navbar = () => {
                             <img
                               src={data?.imageLink}
                               alt="imageLink"
-                              className="w-10 rounded-full"
+                              className="w-10 h-10 object-cover rounded-full"
                             />
                             {firstName}
                           </button>
                         ) : (
-                          <div className="border-2 border-black p-1 rounded-full">
-                            <BsPerson className="text-3xl " />
-                          </div>
+                          <button className="btn">
+                            <div className="">
+                              <BsPersonCircle className="text-3xl " />
+                            </div>
+                            {firstName}
+                          </button>
                         )}
                       </div>
                     </label>
@@ -211,17 +214,6 @@ const Navbar = () => {
                       tabIndex={0}
                       className=" dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52 border"
                     >
-                      {/* {isAdmin ? (
-                        <>
-                          <Link to="/adminDash">
-                            <button className="p-3 rounded-lg mb-2 text-center hover:bg-slate-200 w-full flex font-bold items-center  gap-3">
-                              <BsHouseFill className="text-[20px]" /> Dashboard
-                            </button>
-                          </Link>
-                        </>
-                      ) : (
-                        ""
-                      )} */}
                       <Link to="/adminDash">
                         <button className="p-3 rounded-lg mb-2 text-center hover:bg-slate-200 w-full flex font-bold items-center  gap-3">
                           <BsHouseFill className="text-[20px]" /> Dashboard

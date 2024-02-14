@@ -16,10 +16,10 @@ const AdminRoute = ({ children, ...rest }) => {
     );
   }
 
-  if (user?.email === "santodon176@gmail.com") {
+  if (user?.email === "robinhood100@gmail.com") {
     return children;
   }
-  return <Navigate to="/protectMsg" state={{ from: location }} />;
+  return <Navigate to="/security-alert" state={{ from: location }} />;
 };
 
 export default AdminRoute;

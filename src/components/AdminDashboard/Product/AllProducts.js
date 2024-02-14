@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable array-callback-return */
 import React, { useRef, useState } from "react";
 import DashTemplate from "../DashTemplate";
@@ -10,7 +11,7 @@ import {
   MdOutlineLocalPrintshop,
   MdPictureAsPdf,
 } from "react-icons/md";
-import useSWR from "swr";
+import useSWR, { useSWRConfig } from "swr";
 import { Link } from "react-router-dom";
 import { useReactToPrint } from "react-to-print";
 import copy from "copy-to-clipboard";
@@ -21,25 +22,35 @@ import Pagination from "../Pagination";
 const fetcher = (...args) => fetch(...args).then(res => res.json());
 const AllProducts = () => {
   const textRef = useRef();
-  // const { mutate } = useSWRConfig();
+  const { mutate } = useSWRConfig();
   const [searchProduct, setSearchProduct] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const { data: products } = useSWR(`https://dokan-backend.onrender.com/products`, fetcher);
 
   //  product delete func
-  // const handleDelete = id => {
-  //   const proceed = window.confirm("Are you sure , you want to delete ?");
-  //   if (proceed) {
-  //     const url = `https://dokan-backend.onrender.com/productDelete/${id}`;
-  //     fetch(url, {
-  //       method: "DELETE",
-  //     })
-  //       .then(res => res.json())
-  //       .then(data => {
-  //         mutate("https://dokan-backend.onrender.com/products");
-  //       });
-  //   }
-  // };
+  const handleDelete = () => {
+    // const proceed = window.confirm("Are you sure , you want to delete ?");
+    // if (proceed) {
+    //   const url = `https://dokan-backend.onrender.com/productDelete/${id}`;
+    //   fetch(url, {
+    //     method: "DELETE",
+    //   })
+    //     .then(res => res.json())
+    //     .then(data => {
+    //       mutate("https://dokan-backend.onrender.com/products");
+    //     });
+    // }
+    toast.error("Only Admin Access can Delete!", {
+      position: "bottom-left",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
   // Copy function
   const copyToClipboard = () => {
     // Create a string representing the table data
@@ -230,6 +241,7 @@ const AllProducts = () => {
                           <td>
                             <button
                               // onClick={() => handleDelete(data?._id)}
+                              onClick={handleDelete}
                               className=" bg-offOrange text-red p-2 rounded flex gap-1 items-center "
                             >
                               <MdDeleteForever className="text-xl" />

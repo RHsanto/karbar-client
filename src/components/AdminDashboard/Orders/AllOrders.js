@@ -37,19 +37,30 @@ const AllOrders = () => {
   const { data: orderList } = useSWR(`https://dokan-backend.onrender.com/orders`, fetcher);
 
   //  orders delete functionality
-  // const handleDelete = id => {
-  //   const proceed = window.confirm("Are you sure , you want to delete ?");
-  //   if (proceed) {
-  //     const url = `https://dokan-backend.onrender.com/orderDelete/${id}`;
-  //     fetch(url, {
-  //       method: "DELETE",
-  //     })
-  //       .then(res => res.json())
-  //       .then(data => {
-  //         mutate("https://dokan-backend.onrender.com/orders");
-  //       });
-  //   }
-  // };
+  const handleDelete = () => {
+    // const proceed = window.confirm("Are you sure , you want to delete ?");
+    // if (proceed) {
+    //   const url = `https://dokan-backend.onrender.com/orderDelete/${id}`;
+    //   fetch(url, {
+    //     method: "DELETE",
+    //   })
+    //     .then(res => res.json())
+    //     .then(data => {
+    //       mutate("https://dokan-backend.onrender.com/orders");
+    //     });
+    // }
+    toast.error("Only Admin Access can Delete!", {
+      position: "bottom-left",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
+
   // Copy function
   const copyToClipboard = () => {
     // Create a string representing the table data
@@ -290,6 +301,7 @@ const AllOrders = () => {
                                 </Link>
                                 <button
                                   // onClick={() => handleDelete(data?._id)}
+                                  onClick={handleDelete}
                                   className=" bg-offOrange text-red  p-2 rounded flex gap-1 items-center"
                                 >
                                   <MdDeleteForever className="text-xl" /> Delete

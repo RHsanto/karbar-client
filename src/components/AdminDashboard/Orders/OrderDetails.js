@@ -4,6 +4,7 @@ import DashTemplate from "../DashTemplate";
 import DashHeader from "../DashHeader";
 import adminImg from "../../../images/pro.png";
 import { MdOutlineShoppingCart } from "react-icons/md";
+import { toast } from "react-toastify";
 // const fetcher = (...args) => fetch(...args).then(res => res.json());
 
 const OrderDetails = () => {
@@ -26,19 +27,29 @@ const OrderDetails = () => {
   const total = subTotal + shipping + tax;
 
   //  orders delete functionality
-  // const handleDelete = id => {
-  //   const proceed = window.confirm("Are you sure , you want to delete ?");
-  //   if (proceed) {
-  //     const url = `https://dokan-backend.onrender.com/orderDelete/${id}`;
-  //     fetch(url, {
-  //       method: "DELETE",
-  //     });
-  //     // .then(res => res.json())
-  //     // .then(data => {
-  //     //   mutate("https://dokan-backend.onrender.com/orders");
-  //     // });
-  //   }
-  // };
+  const handleDelete = () => {
+    // const proceed = window.confirm("Are you sure , you want to delete ?");
+    // if (proceed) {
+    //   const url = `https://dokan-backend.onrender.com/orderDelete/${id}`;
+    //   fetch(url, {
+    //     method: "DELETE",
+    //   });
+    //   // .then(res => res.json())
+    //   // .then(data => {
+    //   //   mutate("https://dokan-backend.onrender.com/orders");
+    //   // });
+    // }
+    toast.error("Only Admin Access can Delete!", {
+      position: "bottom-left",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
 
   return (
     <div className="lg:grid grid-cols-6">
@@ -68,6 +79,7 @@ const OrderDetails = () => {
             <div>
               <button
                 // onClick={() => handleDelete(order?._id)}
+                onClick={handleDelete}
                 className="btn bg-offOrange text-red"
               >
                 Delete Order

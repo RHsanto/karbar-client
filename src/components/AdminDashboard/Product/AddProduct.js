@@ -128,9 +128,7 @@ const AddProduct = () => {
                       {...register("category", { required: true })}
                       className="select select-bordered w-full my-2"
                     >
-                      <option disabled selected>
-                        select product category
-                      </option>
+                      <option>select product category</option>
                       <option value="Travel Bag">Travel Bag</option>
                       <option value="Clothing">Clothing</option>
                       <option value="Accessories">Accessories</option>
@@ -145,9 +143,7 @@ const AddProduct = () => {
                       {...register("size", { required: true })}
                       className="select select-bordered w-full my-2"
                     >
-                      <option disabled selected>
-                        select product size
-                      </option>
+                      <option>select product size</option>
                       <option value="S">S</option>
                       <option value="M">M</option>
                       <option value="L">L</option>
@@ -161,9 +157,7 @@ const AddProduct = () => {
                       {...register("type", { required: true })}
                       className="select select-bordered w-full my-2"
                     >
-                      <option disabled selected>
-                        select product type
-                      </option>
+                      <option>select product type</option>
                       <option value="women">Women</option>
                       <option value="man">Man</option>
                       <option value="kids">Kids</option>
@@ -205,7 +199,7 @@ const AddProduct = () => {
                   </div>
                 </div>
                 <div className="mt-16">
-                  <button disabled type="submit" className="btn btn-info text-white">
+                  <button type="submit" className="btn btn-info text-white">
                     Publish product
                   </button>
                 </div>

@@ -66,6 +66,7 @@ const Login = () => {
                   type="email"
                   placeholder="example@gmail.com"
                   className="input input-bordered w-full mt-2"
+                  required
                 />
               </div>
               <div className="mb-8">
@@ -74,6 +75,7 @@ const Login = () => {
                   onBlur={handlePasswordChange}
                   type="text"
                   className="input input-bordered w-full mt-2"
+                  required
                 />
               </div>
               <button type="submit" className="bg-black text-white w-full p-3 rounded-full mb-5">
