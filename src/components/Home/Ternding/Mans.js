@@ -318,7 +318,7 @@ const Mans = () => {
                         ""
                       )}
                       {/* here hover items */}
-                      <div className="hidden absolute left-4 md:left-10 bottom-3 select_size ">
+                      <div className="hidden absolute left-4 bottom-3 select_size ">
                         <div className="lg:flex md:flex hidden my-3">
                           <button
                             onClick={() => handleAdd(product)}
