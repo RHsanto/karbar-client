@@ -10,8 +10,19 @@ const OrderChart = () => {
 
   useEffect(() => {
     if (orderList) {
-      const labels = orderList.map(order => order.date);
-      const data = orderList.map(order => order.orders.length);
+      const labels = orderList.map(order => order.date).slice(-20);
+      const data = orderList.map(order => order.orders.length).slice(-20);
+
+      // Define colors
+      const backgroundColors = [
+        "rgb(255, 99, 132)",
+        "rgb(255, 159, 64)",
+        "rgb(255, 205, 86)",
+        "rgb(75, 192, 192)",
+        "rgb(54, 162, 235)",
+        "rgb(153, 102, 255)",
+        "rgb(201, 203, 207)",
+      ];
 
       // Destroy the existing chart if it exists
       if (chartRef.current) {
@@ -27,9 +38,7 @@ const OrderChart = () => {
             {
               label: "Number of Orders",
               data: data,
-              backgroundColor: "rgba(75, 192, 192, 0.2)",
-              borderColor: "rgba(75, 192, 192, 1)",
-              borderWidth: 1,
+              backgroundColor: backgroundColors.slice(0, data.length),
             },
           ],
         },

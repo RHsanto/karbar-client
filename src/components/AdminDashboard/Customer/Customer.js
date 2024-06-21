@@ -28,6 +28,8 @@ const Customer = () => {
   const [countryFlags, setCountryFlags] = useState({});
   const { data: customerList } = useSWR(`https://dokan-backend.onrender.com/orders`, fetcher);
 
+  const customerData = customerList.slice().reverse();
+
   useEffect(() => {
     // Fetch country flags from rest countries API
     axios.get("https://restcountries.com/v2/all?fields=name,alpha2Code,flags").then(response => {
@@ -125,13 +127,6 @@ const Customer = () => {
                 />
               </div>
               <div className="flex gap-5 items-center">
-                {/* Pagination */}
-                {/* <select className="select select-bordered w-full max-w-xs">
-                  <option>10</option>
-                  <option>20</option>
-                  <option>30</option>
-                </select> */}
-
                 {/* Exports Orders*/}
                 <div className="dropdown dropdown-bottom dropdown-end">
                   <label tabIndex={0} className="btn m-1">
@@ -183,14 +178,14 @@ const Customer = () => {
                   </thead>
                   <tbody>
                     {/* Loading animation */}
-                    {!customerList && (
+                    {!customerData && (
                       <div className="m-10 flex items-center gap-4">
                         Loading
                         <span className="loading loading-dots loading-lg"></span>
                       </div>
                     )}
-                    {customerList &&
-                      customerList
+                    {customerData &&
+                      customerData
                         .slice(firstIndex, lastIndex)
                         .filter(items => {
                           if (searchCustomer === "") {

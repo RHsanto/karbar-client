@@ -36,19 +36,10 @@ const AllOrders = () => {
   const { mutate } = useSWRConfig();
   const { data: orderList } = useSWR(`https://dokan-backend.onrender.com/orders`, fetcher);
 
+  const orderData = orderList.slice().reverse();
+
   //  orders delete functionality
   const handleDelete = () => {
-    // const proceed = window.confirm("Are you sure , you want to delete ?");
-    // if (proceed) {
-    //   const url = `https://dokan-backend.onrender.com/orderDelete/${id}`;
-    //   fetch(url, {
-    //     method: "DELETE",
-    //   })
-    //     .then(res => res.json())
-    //     .then(data => {
-    //       mutate("https://dokan-backend.onrender.com/orders");
-    //     });
-    // }
     toast.error("Only Admin Access can Delete!", {
       position: "bottom-left",
       autoClose: 2000,
@@ -185,13 +176,6 @@ const AllOrders = () => {
                 />
               </div>
               <div className="flex gap-5 items-center">
-                {/* Pagination */}
-                {/* <select className="select select-bordered w-full max-w-xs">
-                  <option>10</option>
-                  <option>20</option>
-                  <option>30</option>
-                </select> */}
-
                 {/* Exports Orders*/}
                 <div className="dropdown dropdown-bottom dropdown-end">
                   <label tabIndex={0} className="btn m-1 ">
@@ -244,14 +228,14 @@ const AllOrders = () => {
                   </thead>
                   <tbody>
                     {/* Loading animation */}
-                    {!orderList && (
+                    {!orderData && (
                       <div className="m-10 flex items-center gap-4">
                         Loading
                         <span className="loading loading-dots loading-lg"></span>
                       </div>
                     )}
-                    {orderList &&
-                      orderList
+                    {orderData &&
+                      orderData
                         .slice(firstIndex, lastIndex)
                         .filter(items => {
                           if (searchOrder === "") {

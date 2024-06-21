@@ -39,7 +39,6 @@ const Index = () => {
         <Route path="/kids" element={<Kids />} />
         <Route path="/beauty" element={<Beauty />} />
         <Route path="/sport" element={<Sport />} />
-        <Route path="/sport" element={<Sport />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/contact" element={<Contact />} />
         <Route
