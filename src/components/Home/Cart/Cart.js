@@ -71,6 +71,7 @@ const Cart = () => {
         <div className="border-t my-10">
           <div className="lg:grid grid-cols-3">
             <div className="col-span-2 p-5">
+              {products?.length === 0 && <h1 className="text-center">404</h1>}
               {products.map(product => (
                 <div key={product?._id} className="flex justify-between my-10 border-b pb-10">
                   <div className=" flex lg:gap-5 gap-3">

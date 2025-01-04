@@ -165,7 +165,7 @@ const Navbar = () => {
                       </div>
                       <p>Shipping and taxes calculated at checkout.</p>
                       <div className="flex justify-center p-5 gap-5">
-                        <button className="btn rounded-full  px-10">
+                        <button disabled={!items?.length} className="btn rounded-full  px-10">
                           <Link onClick={() => handleMenuItemClick("cart")} to="/cart" className="">
                             View cart
                           </Link>
