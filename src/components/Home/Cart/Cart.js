@@ -43,7 +43,7 @@ const Cart = () => {
       const newTotal = total - total * discount;
       setDiscountedTotal(newTotal.toFixed(2));
       setCouponCode("");
-      setErrorMessage(""); // Clear error message
+      setErrorMessage("");
     } else {
       setErrorMessage("Invalid coupon code. Please try again.");
     }
