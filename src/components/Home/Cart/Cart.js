@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { SlMinus } from "react-icons/sl";
 import { BsPlusCircle } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import {
   decrementQuantity,
   incrementQuantity,
@@ -15,17 +16,45 @@ const Cart = () => {
   const dispatch = useDispatch();
   const products = useSelector(state => state.cart);
 
-  // calculate total amount
+  // State for coupon code and discounted total
+  const [couponCode, setCouponCode] = useState("");
+  const [discountedTotal, setDiscountedTotal] = useState(null);
+  const [errorMessage, setErrorMessage] = useState("");
+
+  // Calculate totals
   const subTotal = products?.reduce((order, item) => order + item.price * item.quantity, 0);
   const taxAmount = 0.1 * subTotal;
   const shipping = 56;
   const total = subTotal + shipping + taxAmount;
 
-  // Remove cart
+  // Coupon codes
+  const coupons = {
+    RHSAN15: 0.15,
+    KARBAR10: 0.1,
+    RH0005: 0.05,
+  };
+
+  // Handle coupon application
+  const handleCoupon = e => {
+    e.preventDefault();
+    const discount = coupons[couponCode.toUpperCase()];
+
+    if (discount) {
+      const newTotal = total - total * discount;
+      setDiscountedTotal(newTotal.toFixed(2));
+      setCouponCode("");
+      setErrorMessage(""); // Clear error message
+    } else {
+      setErrorMessage("Invalid coupon code. Please try again.");
+    }
+  };
+
+  // Remove item from cart
   const handleRemove = productId => {
     dispatch(removeFromCart(productId));
   };
-  // increment & decrement
+
+  // Increment & decrement
   const handleIncrement = productId => {
     dispatch(incrementQuantity(productId));
   };
@@ -37,8 +66,8 @@ const Cart = () => {
   return (
     <>
       <Navbar />
-      <div className="container mx-auto lg:px-32 py-10">
-        <h3 className="my-10 text-center lg:text-left">Shopping Cart</h3>
+      <div className="container mx-auto lg:px-32">
+        <h4 className="my-8 text-center lg:text-left">Shopping Cart</h4>
         <div className="border-t my-10">
           <div className="lg:grid grid-cols-3">
             <div className="col-span-2 p-5">
@@ -54,7 +83,7 @@ const Cart = () => {
                       <h5 className="mb-1">{product?.name}</h5>
                       <span>{product?.description}</span> <br />
                       {product?.message ? (
-                        <button className="border mt-4 lg:px-4 lg:py-1 px-2 rounded-full ">
+                        <button className="border mt-4 lg:px-4 lg:py-1 px-2 rounded-full">
                           {product?.message}
                         </button>
                       ) : (
@@ -73,7 +102,7 @@ const Cart = () => {
                   </div>
                   <div className="price_remove">
                     <div>
-                      <button className="text-green  font-bold border-2 px-2 rounded-lg border-green">
+                      <button className="text-green font-bold border-2 px-2 rounded-lg border-green">
                         ${product?.price}.00
                       </button>
                     </div>
@@ -89,31 +118,50 @@ const Cart = () => {
                 </div>
               ))}
             </div>
-            {/* order summary */}
-            <div className="col-span-1 mt-10 border-l p-10">
-              <h4 className="mb-10">Order Summary</h4>
-              <div className="flex justify-between py-4 border-b ">
+            {/* Order summary */}
+            <div className="col-span-1 border-l p-10">
+              <h4 className="mb-4">Order Summary</h4>
+              <div className="flex justify-between py-4 border-b">
                 <span className="text-slate-500">Subtotal</span>
                 <h5>${subTotal.toFixed(2)}</h5>
               </div>
-              <div className="flex justify-between py-4 border-b ">
+              <div className="flex justify-between py-4 border-b">
                 <span className="text-slate-500">Shipping estimate</span>
                 <h5>${subTotal === 0 ? "00" : shipping}</h5>
               </div>
-              <div className="flex justify-between py-4 border-b ">
+              <div className="flex justify-between py-4 border-b">
                 <span className="text-slate-500">Tax estimate</span>
-                <h5>${subTotal === 0 ? "00" : taxAmount}</h5>
+                <h5>${subTotal === 0 ? "00" : taxAmount.toFixed(2)}</h5>
               </div>
-              <div className="flex justify-between py-4  ">
-                <span className="text-[20px] font-bold">Order total</span>
-                <h5>${subTotal === 0 ? "00" : total.toFixed(2)}</h5>
+              <div className="flex justify-between py-4">
+                <span className="text-[20px] font-bold">Payable total</span>
+                <h5>${subTotal === 0 ? "00" : discountedTotal || total.toFixed(2)}</h5>
               </div>
-              <div className="w-80 my-10">
+              <div className="my-5">
                 <Link to="/checkout">
-                  <button className=" w-full btn btn-active btn-neutral text-white rounded-full ">
+                  <button className="w-full btn btn-active btn-neutral text-white rounded">
                     Check out
                   </button>
                 </Link>
+              </div>
+              <div className="mt-20">
+                <form onSubmit={handleCoupon}>
+                  <label className="font-semibold">Try Coupon / Promo Code</label>
+                  <input
+                    type="text"
+                    placeholder="Type here coupon code"
+                    className="input input-bordered w-full my-4"
+                    value={couponCode}
+                    onChange={e => setCouponCode(e.target.value)}
+                  />
+                  {errorMessage && <p className="text-red text-sm mb-1">{errorMessage}</p>}
+                  <button
+                    type="submit"
+                    className="w-full btn bg-blue hover:text-black text-white rounded"
+                  >
+                    Apply Coupon Code
+                  </button>
+                </form>
               </div>
             </div>
           </div>
